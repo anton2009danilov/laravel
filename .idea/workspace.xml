@@ -4,7 +4,6 @@
     <list default="true" id="1fe65c9a-aa7a-42e7-93da-40bac2140238" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +152,7 @@
       <workItem from="1584938041003" duration="139000" />
       <workItem from="1584938670745" duration="151000" />
       <workItem from="1584938846632" duration="205000" />
-      <workItem from="1584939071050" duration="2462000" />
+      <workItem from="1584939071050" duration="2782000" />
     </task>
     <servers />
   </component>
