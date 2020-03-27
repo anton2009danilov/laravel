@@ -44,13 +44,10 @@ Route::group([
 */
 Route::group([
     'prefix' => 'news',
-//    'namespace' => '/',
-//    'as' => 'news.'
+    'as' => 'news.'
 ], function() {
-    Route::get('/', 'NewsController@index')->name('news.index');
-    Route::get('/{id}', 'NewsController@show')->name('news.one');
-//    Route::get('/', 'NewsController@index')->name('index');
-//    Route::get('/{id}', 'NewsController@show')->name('one');
+    Route::get('/', 'NewsController@index')->name('all');
+    Route::get('/{id}', 'NewsController@show')->name('one');
 });
 
 //Route::get('/news', 'NewsController@index')->name('News');

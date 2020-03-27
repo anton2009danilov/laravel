@@ -3,6 +3,9 @@ include('menu.php');
 ?>
 
 <div>
+    <hr>
+    <a href="#">Категории новостей</a>
+    <hr>
     <ul>
         <?php foreach ($news as $item): ?>
         <li>
