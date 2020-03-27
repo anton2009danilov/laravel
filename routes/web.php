@@ -48,6 +48,8 @@ Route::group([
 ], function() {
     Route::get('/', 'NewsController@index')->name('all');
     Route::get('/{id}', 'NewsController@show')->name('one');
+    Route::get('/category/{id}', 'NewsController@showCategory')
+        ->name('category');
 });
 
 //Route::get('/news', 'NewsController@index')->name('News');
