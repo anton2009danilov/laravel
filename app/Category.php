@@ -33,9 +33,6 @@ class Category extends Model
     }
 
     public static function getCategoryId($id) {
-//        var_dump($id);
-//        var_dump(static::getCategories()[$id]);
-//        die;
         return static::getCategories()[$id];
     }
 }

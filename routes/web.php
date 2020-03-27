@@ -52,9 +52,6 @@ Route::group([
         ->name('category');
 });
 
-//Route::get('/news', 'NewsController@index')->name('News');
-//Route::get('/news/{id}', 'NewsController@show')->name('NewsOne');
-
 //Route::get('/',
 //    [
 //        'uses' => 'HomeController@index',
