@@ -50,6 +50,11 @@ Route::group([
     Route::get('/{id}', 'NewsController@show')->name('one');
     Route::get('/category/{id}', 'NewsController@showCategory')
         ->name('category');
+
+//    Route::get('/category/{page_slug}', function($slug) {
+//        return \Page::where('slug', $slug)->firstOrFail();
+//    });
+
 });
 
 //Route::get('/',

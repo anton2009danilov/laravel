@@ -20,9 +20,17 @@ class NewsController extends Controller
     }
 
     public function showCategory($id) {
+
+        $news = [];
+        foreach (News::getNews() as $item) {
+            if($item['category_id'] == $id) {
+                $news[] = $item;
+            }
+        }
+
         return view('category')
             ->with('category', Category::getCategoryId($id))
-            ->with('news', News::getNews())
+            ->with('news', $news)
             ->with('categories', Category::getCategories());
     }
 }

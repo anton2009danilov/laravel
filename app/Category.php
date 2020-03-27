@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     private static $categories = [
-        [
+        1 => [
             'id' => 1,
             'name' => 'Горячие новости',
             'alias' => 'hot'
@@ -25,11 +25,7 @@ class Category extends Model
     ];
 
     public static function getCategories() {
-        $categories = [];
-        foreach (static::$categories as $key => $item) {
-            $categories[$item['id']] = static::$categories[$key];
-        }
-        return $categories;
+        return static::$categories;
     }
 
     public static function getCategoryId($id) {

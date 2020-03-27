@@ -8,7 +8,7 @@ class News extends Model
 {
     private static $news = [
 
-        [
+        1 => [
             'id' => 1,
             'title' => 'Новость 1',
             'text' => 'Горячая новость №1',
@@ -48,16 +48,11 @@ class News extends Model
 
     public static function getNews()
     {
-        $news = [];
-        foreach (static::$news as $key => $item) {
-            $news[$item['id']] = static::$news[$key];
-        }
-        return $news;
+        return static::$news;
     }
 
     public static function getNewsId($id)
     {
-        $news = static::getNews();
-        return $news[$id];
+        return static::getNews()[$id];
     }
 }

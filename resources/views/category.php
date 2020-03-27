@@ -16,12 +16,10 @@ var_dump($category);
 <!--    <hr>-->
 <div>
     <ul>
-        <?php foreach ($news as $item) { ?>
-            <?php if ($item['category_id'] == $category['id']):?>
+        <?php foreach ($news as $item): ?>
                 <li>
                     <a href="<?=route('news.one', $item['id'])?>"> <?=$item['title']?> </a>
                 </li>
-            <?php endif; ?>
-        <?php }?>
+        <?php endforeach;?>
     </ul>
 </div>
