@@ -9,8 +9,7 @@ var_dump($category);
     <a href="<?= route('news.all') ?>">Все новости</a>
 
     <?php foreach ($categories as $item):?>
-        <a href="/news/category/<?= $item['id'] ?>"><?=$item['name']?></a>
-        <!--        <a href="--><?//= route('news.category', $category['id']) ?><!--">--><?//=$category['name']?><!--</a>-->
+        <a href="<?= route('news.category', $item['id']) ?>"><?=$item['name']?></a>
     <?php endforeach;?>
 
 <!--    <hr>-->

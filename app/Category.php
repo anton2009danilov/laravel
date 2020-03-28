@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     private static $categories = [
-        2 => [
-            'id' => 2,
+        1 => [
+            'id' => 1,
             'name' => 'Горячие новости',
             'alias' => 'hot'
         ],
         [
-            'id' => 3,
+            'id' => 2,
             'name' => 'Жуткие новости',
             'alias' => 'horrible'
         ],
         [
-            'id' => 4,
+            'id' => 3,
             'name' => 'Добрые новости',
             'alias' => 'good'
         ]

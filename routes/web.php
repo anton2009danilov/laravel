@@ -47,8 +47,7 @@ Route::group([
     'as' => 'news.'
 ], function() {
     Route::get('/', 'NewsController@index')->name('all');
-    Route::get('/{id}', 'NewsController@show')->name('one');
+    Route::get('/One/{id}', 'NewsController@show')->name('one');
     Route::get('/category/{id}', 'NewsController@showCategory')
         ->name('category');
 });
-
