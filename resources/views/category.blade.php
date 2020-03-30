@@ -1,6 +1,7 @@
 <?php
 include('menu.php');
 var_dump($category);
+
 ?>
 
 <h1><?=$category['name']?></h1>
