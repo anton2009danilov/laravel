@@ -1,5 +1,3 @@
-<?php
-    include ('menu.php');
-?>
+@include('menu')
 
 <h1>Добро пожаловать!</h1>

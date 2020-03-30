@@ -1,22 +1,20 @@
-<?php
-include('menu.php');
-?>
+@include('menu')
 
 <div>
     <hr>
-    <a href="<?= route('news.all') ?>">Все новости</a>
+    <a href="{{ route('news.all') }}">Все новости</a>
 
-    <?php foreach ($categories as $category):?>
-        <a href="<?= route('news.category', $category['id']) ?>"><?=$category['name']?></a>
-    <?php endforeach;?>
+    @foreach ($categories as $category)
+        <a href="{{ route('news.category', $category['id']) }}">{{ $category['name'] }}</a>
+    @endforeach
 
     <hr>
     <ul>
-        <?php foreach ($news as $item): ?>
+        @foreach ($news as $item)
         <li>
-            <a href="<?=route('news.one', $item['id'])?>"> <?=$item['title']?> </a>
+            <a href="{{ route('news.one', $item['id']) }}">{{ $item['title'] }}</a>
         </li>
-        <?php endforeach; ?>
+        @endforeach
     </ul>
 </div>
 

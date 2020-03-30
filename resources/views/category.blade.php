@@ -1,25 +1,22 @@
-<?php
-include('menu.php');
-var_dump($category);
 
-?>
+@include('menu')
 
-<h1><?=$category['name']?></h1>
+<h1> {{ $category['name'] }} </h1>
 
     <hr>
-    <a href="<?= route('news.all') ?>">Все новости</a>
+    <a href="{{ route('news.all') }}">Все новости</a>
 
-    <?php foreach ($categories as $item):?>
-        <a href="<?= route('news.category', $item['id']) ?>"><?=$item['name']?></a>
-    <?php endforeach;?>
+    @foreach ($categories as $item)
+        <a href=" {{ route('news.category', $item['id']) }} "> {{ $item['name'] }}</a>
+    @endforeach
 
 <!--    <hr>-->
 <div>
     <ul>
-        <?php foreach ($news as $item): ?>
+        @foreach ($news as $item)
                 <li>
-                    <a href="<?=route('news.one', $item['id'])?>"> <?=$item['title']?> </a>
+                    <a href=" {{ route('news.one', $item['id']) }} "> {{ $item['title'] }} </a>
                 </li>
-        <?php endforeach;?>
+        @endforeach
     </ul>
 </div>

@@ -1,19 +1,15 @@
-<?php
-include('menu.php');
-?>
+@include('menu')
 
 <hr>
-<a href="<?= route('news.all') ?>">Все новости</a>
+<a href="{{ route('news.all') }}">Все новости</a>
 
-<?php foreach ($categories as $category):?>
-    <a href="<?= route('news.category', $category['id']) ?>"><?=$category['name']?></a>
-<?php endforeach;?>
+@foreach ($categories as $category)
+    <a href="{{ route('news.category', $category['id']) }}">{{ $category['name'] }}</a>
+@endforeach
 
 <hr>
 
 <article>
-    <h3><?=$news['title']?></h3>
-    <p>
-        <?=$news['text']?>
-    </p>
+    <h3>{{ $news['title'] }}</h3>
+    <p>{{ $news['text'] }}</p>
 </article>
