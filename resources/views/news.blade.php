@@ -25,6 +25,7 @@
                         <a href="{{ route('news.one', $item['id']) }}">Подробнее...</a>
                     </li>
                 @endif
+                <hr>
             @empty
                 <h3>Нет новостей</h3>
             @endforelse
