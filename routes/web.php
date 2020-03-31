@@ -57,3 +57,7 @@ Route::group([
 });
 
 Route::view('/vue', 'vue')->name('vue');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
