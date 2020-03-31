@@ -11,11 +11,6 @@
 @section('content')
     <div>
         <hr>
-{{--        <a href="{{ route('news.index') }}">Все новости</a>--}}
-
-{{--        @include('news.nav')--}}
-
-        <hr>
         <ul>
             @forelse ($news as $item)
                 <h3>{{ $item['title'] }}</h3>
