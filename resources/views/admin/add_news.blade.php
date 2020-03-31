@@ -9,7 +9,28 @@
 @endsection
 
 @section('content')
-    <h1>Тест 1</h1>
+    <div class="container mt-2">
+        <h3>Форма для добавление новости</h3>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Заголовок</label>
+                <input type="text" class="for m-control" id="exampleFormControlInput1" placeholder="Заголовок">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Категория</label>
+
+                <select class="form-control" id="exampleFormControlSelect1">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category['id'] }}"> {{ $category['name'] }} </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+        </form>
+    </div>
 @endsection
 
 
