@@ -11,9 +11,9 @@
 @section('content')
     <div>
         <hr>
-        <a href="{{ route('news.all') }}">Все новости</a>
+{{--        <a href="{{ route('news.index') }}">Все новости</a>--}}
 
-        @include('news.nav')
+{{--        @include('news.nav')--}}
 
         <hr>
         <ul>
@@ -22,7 +22,7 @@
 
                 @if (!$item['isPrivate'] === true)
                     <li>
-                        <a href="{{ route('news.one', $item['id']) }}">Подробнее...</a>
+                        <a href="{{ route('news.show', $item['id']) }}">Подробнее...</a>
                     </li>
                 @endif
                 <hr>
