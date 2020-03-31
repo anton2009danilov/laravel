@@ -1,24 +1,33 @@
-@include('menu')
+@extends('layouts.main')
 
-<div>
-    <hr>
-    <a href="{{ route('news.all') }}">Все новости</a>
+@section('title')
+    @parent Новости
+@endsection
 
-    @include('news.nav')
+@section('menu')
+    @include('menu')
+@endsection
 
-    <hr>
-    <ul>
-        @forelse ($news as $item)
-            <h3>{{ $item['title'] }}</h3>
+@section('content')
+    <div>
+        <hr>
+        <a href="{{ route('news.all') }}">Все новости</a>
 
-            @if (!$item['isPrivate'] === true)
-                <li>
-                    <a href="{{ route('news.one', $item['id']) }}">Подробнее...</a>
-                </li>
-            @endif
-        @empty
-            <h3>Нет новостей</h3>
-        @endforelse
-    </ul>
-</div>
+        @include('news.nav')
 
+        <hr>
+        <ul>
+            @forelse ($news as $item)
+                <h3>{{ $item['title'] }}</h3>
+
+                @if (!$item['isPrivate'] === true)
+                    <li>
+                        <a href="{{ route('news.one', $item['id']) }}">Подробнее...</a>
+                    </li>
+                @endif
+            @empty
+                <h3>Нет новостей</h3>
+            @endforelse
+        </ul>
+    </div>
+@endsection

@@ -27,8 +27,6 @@ class NewsController extends Controller
     }
 
     public function showCategory($slug) {
-//        var_dump($id); die;
-//        $news = [];
         $category = Category::getCategoryIdBySlug($slug);
 
         foreach (News::getNews() as $item) {

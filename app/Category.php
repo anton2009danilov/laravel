@@ -28,20 +28,18 @@ class Category extends Model
         return static::$categories;
     }
 
-    public static function getCategoryId($id) {
+    public static function getCategoryById($id) {
         return static::getCategories()[$id];
     }
 
     public static function getCategoryIdBySlug($slug) {
-        $id = null;
+        $category_found = null;
         foreach (static::$categories as $category) {
-            if ($category['slug'] == $slug)
-                $id = $category['id'];
+            if ($category['slug'] == $slug) {
+                $category_found = static::getCategoryById($category['id']);
+                break;
+            }
         }
-
-        if ($id === null) return null;
-
-        return static::getCategoryId($id);
-//        return $id;
+        return $category_found;
     }
 }

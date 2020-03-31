@@ -1,4 +1,13 @@
-@include('admin.menu')
+@extends('layouts.main')
 
-<h1>Админка</h1>
+@section('title')
+    @parent Админка
+@endsection
 
+@section('menu')
+    @include('admin.menu')
+@endsection
+
+@section('content')
+    <h1>Админка</h1>
+@endsection

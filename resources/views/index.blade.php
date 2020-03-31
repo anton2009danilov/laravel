@@ -1,3 +1,13 @@
-@include('menu')
+@extends('layouts.main')
 
-<h1>Добро пожаловать!</h1>
+@section('title')
+    @parentГлавная
+@endsection
+
+@section('menu')
+    @include('menu')
+@endsection
+
+@section('content')
+    <h1>Добро пожаловать!</h1>
+@endsection

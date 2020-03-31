@@ -1,4 +1,3 @@
-@dump(\App\Category::getCategoryIdBySlug('hot'))
 @include('menu')
 
 <h1> {{ $category['name'] }} </h1>

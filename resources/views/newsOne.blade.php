@@ -1,17 +1,28 @@
-@include('menu')
+@extends('layouts.main')
 
-<hr>
-<a href="{{ route('news.all') }}">Все новости</a>
+@section('title')
+    @parent {{ $news['title'] }}
+@endsection
 
-@include('news.nav')
+@section('menu')
+    @include('menu')
+@endsection
 
-<hr>
+@section('content')
+    <hr>
+    <a href="{{ route('news.all') }}">Все новости</a>
 
-@if (!$news['isPrivate'] === true)
-    <article>
-        <h3>{{ $news['title'] }}</h3>
-        <p>{{ $news['text'] }}</p>
-    </article>
-@else
-    <h3>Зарегистрируйтесь, чтобы прочитать новость </h3>
-@endif
+    @include('news.nav')
+
+    <hr>
+
+    @if (!$news['isPrivate'] === true)
+        <article>
+            <h3>{{ $news['title'] }}</h3>
+            <p>{{ $news['text'] }}</p>
+        </article>
+    @else
+        <h3>Зарегистрируйтесь, чтобы прочитать новость </h3>
+    @endif
+@endsection
+
