@@ -55,3 +55,5 @@ Route::group([
         Route::get('/category/{name}', 'CategoryController@show')->name('show');
     });
 });
+
+Route::view('/vue', 'vue')->name('vue');
