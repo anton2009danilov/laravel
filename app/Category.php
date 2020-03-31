@@ -32,14 +32,14 @@ class Category extends Model
         return static::getCategories()[$id];
     }
 
-    public static function getCategoryIdBySlug($slug) {
-        $category_found = null;
+    public static function getCategoryIdByName($slug) {
+        $id = null;
         foreach (static::$categories as $category) {
             if ($category['slug'] == $slug) {
-                $category_found = static::getCategoryById($category['id']);
+                $id = $category['id'];
                 break;
             }
         }
-        return $category_found;
+        return $id;
     }
 }
