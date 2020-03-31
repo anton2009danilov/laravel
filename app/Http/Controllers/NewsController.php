@@ -17,8 +17,10 @@ class NewsController extends Controller
     public function show($id) {
 
         if (array_key_exists($id, News::getNews())) {
-            return view('news.one')->with('news', News::getNewsId($id))
-                ->with('categories', Category::getCategories());
+            $news = News::getNewsId($id);
+//            var_dump($news['category_id']); die;
+            return view('news.one')->with('news', $news)
+                ->with('category',Category::getCategoryById($news['category_id']));
         }
         else {
             return redirect()->route('news.index');
