@@ -9,7 +9,11 @@
 
 <hr>
 
-<article>
-    <h3>{{ $news['title'] }}</h3>
-    <p>{{ $news['text'] }}</p>
-</article>
+@if (!$news['isPrivate'] === true)
+    <article>
+        <h3>{{ $news['title'] }}</h3>
+        <p>{{ $news['text'] }}</p>
+    </article>
+@else
+    <h3>Зарегистрируйтесь, чтобы прочитать новость </h3>
+@endif
