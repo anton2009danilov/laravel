@@ -26,20 +26,20 @@ class NewsController extends Controller
 
     }
 
-    public function showCategory($id) {
+    public function showCategory($slug) {
 //        var_dump($id); die;
 //        $news = [];
-//        $category = Category::getCategoryIdBySlug($id);
+        $category = Category::getCategoryIdBySlug($slug);
 
         foreach (News::getNews() as $item) {
-            if($item['category_id'] == $id) {
+            if($item['category_id'] == $category['id']) {
                 $news[] = $item;
             }
         }
 
         return view('category')
-            ->with('category', Category::getCategoryId($id))
-//            ->with('category', $category)
+//            ->with('category', Category::getCategoryId($id))
+            ->with('category', $category)
             ->with('news', $news)
             ->with('categories', Category::getCategories());
     }

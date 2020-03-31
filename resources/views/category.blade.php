@@ -6,9 +6,7 @@
     <hr>
     <a href="{{ route('news.all') }}">Все новости</a>
 
-    @foreach ($categories as $category)
-        <a href=" {{ route('news.category', $category['id']) }} "> {{ $category['name'] }}</a>
-    @endforeach
+    @include('news.nav')
 
 <!--    <hr>-->
 <div>
