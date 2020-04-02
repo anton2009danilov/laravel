@@ -11,18 +11,15 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-8">
 
                 <div class="card m-5">
-{{--                    <div class="card-header">Список новостей</div>--}}
-
                     <div class="card-body">
                         <div class="list-group">
                             @forelse ($news as $item)
 
                                 <div class="list-group-item m-2">
                                     {{ $item['title'] }}
-{{--                                    <div class="">{{ $item['title'] }}</div>--}}
 
                                     @if (!$item['isPrivate'] === true)
                                     <a href="{{ route('news.show', $item['id']) }}" class="float-right small pt-3">
