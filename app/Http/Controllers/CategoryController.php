@@ -14,11 +14,14 @@ class CategoryController extends Controller
     }
 
     public function show($name) {
-        $category = Category::getCategoryById(Category::getCategoryIdByName($name));
+        if (!is_null(Category::getCategoryIdByName($name))) {
+            $category = Category::getCategoryById(Category::getCategoryIdByName($name));
 
-        return view('news.category.one')
-            ->with('news', News::getNewsByCategoryName($name))
-            ->with('category', $category);
-
+            return view('news.category.one')
+                ->with('news', News::getNewsByCategoryName($name))
+                ->with('category', $category);
+        } else {
+            return redirect()->route('news.category.index');
+        }
     }
 }
