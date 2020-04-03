@@ -1,8 +1,6 @@
 @extends('layouts.main')
 
-@section('title')
-    @parent {{ $news['title'] }}
-@endsection
+@section('title', $news['title'])
 
 @section('menu')
     @include('menu')
