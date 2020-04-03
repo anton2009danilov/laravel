@@ -54,6 +54,7 @@ class News extends Model
 
     public static function getNews()
     {
+//        \File::get();
         return static::$news;
     }
 

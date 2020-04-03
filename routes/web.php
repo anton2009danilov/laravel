@@ -29,7 +29,8 @@ Route::group([
 ], function () {
     Route::get('/', 'IndexController@index')->name('index');
     Route::match(['get','post'],'/create', 'IndexController@create')->name('create');
-    Route::get('/test2', 'IndexController@test2')->name('test2');
+    Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
+    Route::get('/json', 'IndexController@json')->name('json');
 });
 
 

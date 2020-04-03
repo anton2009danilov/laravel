@@ -40,7 +40,7 @@
                     <textarea name="text" class="form-control" id="text" rows="3">{{ old('text') }}</textarea>
                 </div>
                 <div class="form-group form-check">
-                    <input @if (old('isPrivate')) checked @endif type="checkbox" value="1" name="isPrivate" class="form-check-input" id="private">
+                    <input @if (old('isPrivate') == 1) checked @endif type="checkbox" value="1" name="isPrivate" class="form-check-input" id="private">
                     <label class="form-check-label" for="private">Доступно только зарегистрированным пользователям</label>
                 </div>
                 <div class="col-sm-10">
