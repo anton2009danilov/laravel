@@ -10,7 +10,7 @@
 
 @section('content')
 
-            <div class="card m-5">
+            <div class="card mt-3">
 {{--                <div class="card-header">{{ __('passwords.reset') }}</div>--}}
                 <div class="card-header">{{ __('Login') }}</div>
 

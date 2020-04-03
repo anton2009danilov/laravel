@@ -10,7 +10,7 @@
 
 
     @if (!$news['isPrivate'] === true)
-    <div class="card m-5">
+    <div class="card mt-3">
         <div class="card-header">{{ $news['title'] }}</div>
         <div class="card-body">
             <div class="list-group">

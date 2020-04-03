@@ -12,7 +12,13 @@ class IndexController extends Controller
     public function index() {
         return view('admin.index');
     }
-    public function create () {
+    public function create (Request $request) {
+        if($request->isMethod('post')) {
+            $request->flash();
+//            dd($request->except('_token'));
+            return redirect()->route('admin.create');
+        }
+        dump($request->old());
         return view('admin.create')->with('categories', Category::getCategories());
     }
     public function test2() {

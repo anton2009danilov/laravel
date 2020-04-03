@@ -9,7 +9,7 @@
 @section('content')
 
 
-    <div class="card m-5">
+    <div class="card mt-3">
         <div class="card-body">
             <h1 class="text-center"> {{ $category['name'] }} </h1>
             <div class="list-group">

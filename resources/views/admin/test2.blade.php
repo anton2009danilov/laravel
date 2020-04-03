@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="card m-5">
+    <div class="card mt-3">
         <div class="card-body">
             <h1>Тест 2</h1>
         </div>
