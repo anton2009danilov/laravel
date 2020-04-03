@@ -28,7 +28,7 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     Route::get('/', 'IndexController@index')->name('index');
-    Route::get('/add-news', 'IndexController@add_news')->name('add_news');
+    Route::get('/create', 'IndexController@create')->name('create');
     Route::get('/test2', 'IndexController@test2')->name('test2');
 });
 

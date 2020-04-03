@@ -12,8 +12,8 @@ class IndexController extends Controller
     public function index() {
         return view('admin.index');
     }
-    public function add_news () {
-        return view('admin.add_news')->with('categories', Category::getCategories());
+    public function create () {
+        return view('admin.create')->with('categories', Category::getCategories());
     }
     public function test2() {
         return view('admin.test2');
