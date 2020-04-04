@@ -26,7 +26,15 @@ class IndexController extends Controller
     public function create (Request $request) {
         if($request->isMethod('post')) {
             $request->flash();
-//            \File::put();
+            $news = News::getNews();
+            $data = $request->except('_token');
+            $data['id'] = last($news)['id'];
+            $data = \Arr::add($data, 'isPrivate', false);
+            $news[] = $data;
+            die;
+//            \Storage::put('news.json', 111);
+//            \Storage::disk('local')->put('news.json', $save);
+//            \File::put(1);
 //            dd($request->except('_token'));
             return redirect()->route('admin.create');
         }
