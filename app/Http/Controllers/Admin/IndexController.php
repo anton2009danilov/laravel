@@ -11,10 +11,9 @@ class IndexController extends Controller
 {
 
     public function index() {
-//        $data = response()->json(News::getNews())
-//            ->header('Content-Disposition', 'attachment; filename = "json.txt"')
-//            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-//        \Storage::disk('local')->put('news.json', $data);
+//        $data = json_encode(News::$news, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+//        \Storage::put('news.json', $data);
+
 //        $data = response()->json(Category::getCategories())
 //            ->header('Content-Disposition', 'attachment; filename = "json.txt"')
 //            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
@@ -26,16 +25,16 @@ class IndexController extends Controller
     public function create (Request $request) {
         if($request->isMethod('post')) {
             $request->flash();
+
             $news = News::getNews();
             $data = $request->except('_token');
             $data['id'] = last($news)['id'];
             $data = \Arr::add($data, 'isPrivate', false);
             $news[] = $data;
-            die;
-//            \Storage::put('news.json', 111);
-//            \Storage::disk('local')->put('news.json', $save);
-//            \File::put(1);
-//            dd($request->except('_token'));
+
+            $save = json_encode($news, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            \Storage::put('news.json', $save);
+
             return redirect()->route('admin.create');
         }
 //        dump($request->old());
