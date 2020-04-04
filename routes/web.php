@@ -28,8 +28,9 @@ Route::group([
     'as' => 'admin.'
 ], function () {
     Route::get('/', 'IndexController@index')->name('index');
-    Route::get('/add-news', 'IndexController@add_news')->name('add_news');
-    Route::get('/test2', 'IndexController@test2')->name('test2');
+    Route::match(['get','post'],'/create', 'IndexController@create')->name('create');
+    Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
+    Route::get('/json', 'IndexController@json')->name('json');
 });
 
 

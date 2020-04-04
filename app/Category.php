@@ -6,26 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    private static $categories = [
-        1 => [
-            'id' => 1,
-            'name' => 'Горячие новости',
-            'slug' => 'hot'
-        ],
-        [
-            'id' => 2,
-            'name' => 'Жуткие новости',
-            'slug' => 'horrible'
-        ],
-        [
-            'id' => 3,
-            'name' => 'Добрые новости',
-            'slug' => 'good'
-        ]
-    ];
 
     public static function getCategories() {
-        return static::$categories;
+        $categories = \Storage::get('categories.json');
+        $categories = json_decode($categories, true);
+        return $categories;
     }
 
     public static function getCategoryById($id) {
@@ -34,7 +19,7 @@ class Category extends Model
 
     public static function getCategoryIdByName($slug) {
         $id = null;
-        foreach (static::$categories as $category) {
+        foreach (static::getCategories() as $category) {
             if ($category['slug'] == $slug) {
                 $id = $category['id'];
                 break;

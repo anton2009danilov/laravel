@@ -23,7 +23,7 @@ class MenuProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->getMenu();
+//        $this->getMenu();
     }
 
     private function getMenu() {

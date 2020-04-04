@@ -1,10 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@section('title')
+    @parent Логин
+@endsection
+
+@section('menu')
+    @include('menu')
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+
+            <div class="card mt-3">
 {{--                <div class="card-header">{{ __('passwords.reset') }}</div>--}}
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -68,7 +74,5 @@
                     </form>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
 @endsection
