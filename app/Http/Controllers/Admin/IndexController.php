@@ -21,11 +21,18 @@ class IndexController extends Controller
         if ($request->isMethod('post')) {
 //            $request->flash();
 
+            $url = null;
+            if ($request->file('image')) {
+                $path = \Storage::putFile('public/images', $request->file('image'));
+                $url = \Storage::url($path);
+            }
+
             $data = News::getNews();
             $data[] = [
                 'title' => $request->title,
                 'category_id' => $request->category_id,
                 'text' => $request->text,
+                'image' => $url,
                 'isPrivate' => isset($request->isPrivate)
             ];
             $id = array_key_last($data);
