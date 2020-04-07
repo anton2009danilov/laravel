@@ -6,6 +6,7 @@ use App\Category;
 use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class IndexController extends Controller
 {
@@ -20,14 +21,17 @@ class IndexController extends Controller
         if ($request->isMethod('post')) {
 //            $request->flash();
 
-            $news = News::getNews();
-            $data = $request->except('_token');
-            $data['id'] = last($news)['id'] + 1;
-            $data = \Arr::add($data, 'isPrivate', false);
-            $news[] = $data;
-
-            $save = json_encode($news, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-            \Storage::put('news.json', $save);
+            $data = News::getNews();
+            $data[] = [
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'text' => $request->text,
+                'isPrivate' => isset($request->isPrivate)
+            ];
+            $id = array_key_last($data);
+            $data[$id]['id'] = $id;
+            File::put(storage_path(). "/app/news.json", json_encode($data,
+                JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
             return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
         }
