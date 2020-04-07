@@ -8,7 +8,6 @@
 
 @section('content')
 
-
     @if (!$news['isPrivate'] === true)
     <div class="card mt-3">
         <div class="card-header">{{ $news['title'] }}</div>

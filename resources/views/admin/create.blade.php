@@ -24,9 +24,9 @@
                     <input name="title" value="{{ old('title') }}" type="text" class="form-control" id="title" placeholder="Заголовок">
                 </div>
                 <div class="form-group">
-                    <label for="category">Категория</label>
+                    <label for="category_id">Категория</label>
                     @if (!empty($categories))
-                        <select name="category" class="form-control" id="category">
+                        <select name="category_id" class="form-control" id="category_id">
                             @foreach ($categories as $category)
                                 <option @if ($category['id'] == old('category')) selected @endif value="{{ $category['id'] }}"> {{ $category['name'] }} </option>
                             @endforeach
