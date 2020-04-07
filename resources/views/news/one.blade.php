@@ -11,6 +11,10 @@
     @if (!$news['isPrivate'] === true)
     <div class="card mt-3">
         <div class="card-header">{{ $news['title'] }}</div>
+        <div class="card-img"
+             style="background-image: url({{ $news['image'] ??
+                                         asset('storage/default.jpg')}})">
+        </div>
         <div class="card-body">
             <div class="list-group">
                     <article>
