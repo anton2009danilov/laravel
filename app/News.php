@@ -14,42 +14,48 @@ class News extends Model
                 "title" => "Новость 1 (крайне интересно)",
                 "text" => "Горячая новость №1",
                 "category_id" => 1,
-                "isPrivate" => true
+                "isPrivate" => true,
+                "image" => null
             ],
             "2" => [
                 "id" => 2,
                 "title" => "Новость 2",
                 "text" => "Леденящая кровь новость 1",
                 "category_id" => 2,
-                "isPrivate" => false
+                "isPrivate" => false,
+                "image" => null
             ],
             "3" => [
                 "id" => 3,
                 "title" => "Новость 3",
                 "text" => "Прогноз => всё будет хорошо",
                 "category_id" => 3,
-                "isPrivate" => false
+                "isPrivate" => false,
+                "image" => null
             ],
             "4" => [
                 "id" => 4,
                 "title" => "Новость 4 (крайне интересно)",
                 "text" => "Горячая новость №2",
                 "category_id" => 1,
-                "isPrivate" => true
+                "isPrivate" => true,
+                "image" => null
             ],
             "5" => [
                 "id" => 5,
                 "title" => "Новость 5",
                 "text" => "Горячая новость №3",
                 "category_id" => 1,
-                "isPrivate" => false
+                "isPrivate" => false,
+                "image" => null
             ],
             "6" => [
                 "id" => 6,
                 "title" => "Новость 6 (крайне интересно)",
                 "text" => "Леденящая кровь новость 2",
                 "category_id" => 2,
-                "isPrivate" => true
+                "isPrivate" => true,
+                "image" => null
             ],
         ];
 
