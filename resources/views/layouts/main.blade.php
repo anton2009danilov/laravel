@@ -8,6 +8,7 @@
 {{--    <title>@section('title')Страница | @show</title>--}}
     <title>Страница | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
