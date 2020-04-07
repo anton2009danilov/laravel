@@ -31,7 +31,7 @@ class IndexController extends Controller
             $id = array_key_last($data);
             $data[$id]['id'] = $id;
             File::put(storage_path(). "/app/news.json", json_encode($data,
-                JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
+                JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK));
 
             return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
         }
