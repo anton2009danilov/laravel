@@ -40,10 +40,10 @@ class savejson extends Command
      */
     public function handle()
     {
-        File::put(storage_path() . "/news.json", json_encode(News::$news,
+        File::put(storage_path() . "/app/news.json", json_encode(News::$news,
             JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
 
-        File::put(storage_path() . "/categories.json", json_encode(Category::$categories,
+        File::put(storage_path() . "/app/categories.json", json_encode(Category::$categories,
             JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
     }
 }
