@@ -46,5 +46,13 @@
         "category_id": 2,
         "isPrivate": true,
         "image": null
+    },
+    "7": {
+        "title": "Новая новость",
+        "category_id": 3,
+        "text": "Лягушка Ква",
+        "image": "\/storage\/images\/rcxxWmc5RmaewDx6gpTU7OzpPTQVu9h1uDor2Jf5.jpeg",
+        "isPrivate": false,
+        "id": 7
     }
 }
