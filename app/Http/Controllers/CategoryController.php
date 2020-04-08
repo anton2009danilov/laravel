@@ -15,11 +15,15 @@ class CategoryController extends Controller
     }
 
     public function show($name) {
-        if (!is_null(Category::getCategoryIdByName($name))) {
-            $category = Category::getCategoryById(Category::getCategoryIdByName($name));
+        $category = \DB::table('categories')->where('slug', $name)->first();
+        $news = \DB::table('news')->limit(5)->get();
+//        dd($news);
+//        dd($category);
+
+        if (!empty($category)) {
 
             return view('news.category.one')
-                ->with('news', News::getNewsByCategoryName($name))
+                ->with('news', $news)
                 ->with('category', $category);
         } else {
             return redirect()->route('news.category.index');
