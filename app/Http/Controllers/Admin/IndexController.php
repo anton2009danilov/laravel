@@ -27,18 +27,15 @@ class IndexController extends Controller
                 $url = \Storage::url($path);
             }
 
-            $data = News::getNews();
-            $data[] = [
+            $data = [
                 'title' => $request->title,
-                'category_id' => $request->category_id,
+//                'category_id' => $request->category_id,
                 'text' => $request->text,
                 'image' => $url,
                 'isPrivate' => isset($request->isPrivate)
             ];
-            $id = array_key_last($data);
-            $data[$id]['id'] = $id;
-            File::put(storage_path(). "/app/news.json", json_encode($data,
-                JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK));
+
+            \DB::table('news')->insert($data);
 
             return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
         }
