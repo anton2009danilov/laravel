@@ -9,9 +9,11 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index() {
+        $news = \DB::select('SELECT * FROM news');
+//        dd($news);
         return view('news.index')
-            ->with('news', News::getNews())
-            ->with('categories', Category::getCategories());
+            ->with('news', $news);
+
     }
 
     public function show($id) {

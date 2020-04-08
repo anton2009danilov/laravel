@@ -13,13 +13,13 @@
                 @forelse ($news as $item)
 
                     <div class="list-group-item m-2">
-                        {{ $item['title'] }}
+                        {{ $item->title }}
                         <div class="card-img"
-                             style="background-image: url({{ $item['image'] ??
-                                         asset('storage/default.jpg')}})">
+                             style="background-image: url({{ $item->image ??
+                                         asset('storage/default.jpg') }})">
                         </div>
-                        @if (!$item['isPrivate'] === true)
-                            <a href="{{ route('news.show', $item['id']) }}" class="float-right small pt-3">
+                        @if (!$item->isPrivate === true)
+                            <a href="{{ route('news.show', $item->id) }}" class="float-right small pt-3">
                                 Подробнее...
                             </a>
 
