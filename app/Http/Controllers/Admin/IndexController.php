@@ -39,19 +39,9 @@ class IndexController extends Controller
 
             return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
         }
-//        dump($request->old());
-        return view('admin.create')->with('categories', Category::getCategories());
+
+        $categories = \DB::table('categories')->get();
+        return view('admin.create')->with('categories', $categories);
     }
 
-    public function downloadImage()
-    {
-        return response()->download('pikachu-detective.jpg');
-    }
-
-    public function json()
-    {
-        return response()->json(News::getNews())
-            ->header('Content-Disposition', 'attachment; filename = "json.txt"')
-            ->setEncodingOptions(JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-    }
 }

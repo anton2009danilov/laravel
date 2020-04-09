@@ -28,7 +28,7 @@
                     @if (!empty($categories))
                         <select name="category_id" class="form-control" id="category_id">
                             @foreach ($categories as $category)
-                                <option @if ($category['id'] == old('category')) selected @endif value="{{ $category['id'] }}"> {{ $category['name'] }} </option>
+                                <option @if ($category->id == old('category')) selected @endif value="{{ $category->id }}"> {{ $category->name }} </option>
                             @endforeach
                         </select>
                     @else
