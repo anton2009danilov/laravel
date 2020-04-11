@@ -28,6 +28,7 @@
                 @empty
                     <h3>Нет новостей</h3>
                 @endforelse
+                {{ $news->links() }}
             </div>
         </div>
     </div>
