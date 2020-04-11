@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\News;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,8 +18,12 @@ class NewsController extends Controller
 
     }
 
-    public function edit() {
-
+    public function edit(Request $request, News $news) {
+//        dd($news);
+        return view('admin.create', [
+            'news' => $news,
+            'categories' => Category::query()->get()
+        ]);
     }
 
     public function destroy() {
@@ -31,6 +36,8 @@ class NewsController extends Controller
 
     public function create(Request $request)
     {
+        $news = new News();
+
         if ($request->isMethod('post')) {
 //            $request->flash();
 
@@ -38,22 +45,18 @@ class NewsController extends Controller
             if ($request->file('image')) {
                 $path = \Storage::putFile('public/images', $request->file('image'));
                 $url = \Storage::url($path);
+                $news->setAttribute('image', $url);
             }
 
-            $data = [
-                'title' => $request->title,
-//                'category_id' => $request->category_id,
-                'text' => $request->text,
-                'image' => $url,
-                'isPrivate' => isset($request->isPrivate)
-            ];
+            $news->fill($request->all())->save();
 
-            \DB::table('news')->insert($data);
 
             return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
         }
 
         $categories = \DB::table('categories')->get();
-        return view('admin.create')->with('categories', $categories);
+        return view('admin.create')
+            ->with('categories', $categories)
+            ->with('news', $news);
     }
 }

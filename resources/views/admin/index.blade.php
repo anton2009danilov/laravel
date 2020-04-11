@@ -19,13 +19,17 @@
                 @forelse ($news as $item)
 
                     <div class="list-group-item m-2">
-                        {{ $item->title }}
-                        <a href="{{ route('admin.update', $item) }}">
+                        <h3>{{ $item->title }}
+                        <a href="{{ route('admin.edit', $item) }}" class="float-right mr-1">
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
-                        <a href="{{ route('admin.destroy', $item) }}">
+                        <a href="{{ route('admin.destroy', $item) }}" class="float-right mr-1">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </a>
+                        <a href="{{ route('news.show', $item) }}" class="float-right mr-1">
+                            <button type="button" class="btn btn-primary">Show</button>
+                        </a>
+                        </h3>
                     </div>
                 @empty
                     <h3>Нет новостей</h3>
