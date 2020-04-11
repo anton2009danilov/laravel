@@ -20,6 +20,7 @@
 
                     <div class="list-group-item m-2">
                         <h3>{{ $item->title }}
+                        </h3>
                         <a href="{{ route('admin.edit', $item) }}" class="float-right mr-1">
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
@@ -29,7 +30,6 @@
                         <a href="{{ route('news.show', $item) }}" class="float-right mr-1">
                             <button type="button" class="btn btn-primary">Show</button>
                         </a>
-                        </h3>
                     </div>
                 @empty
                     <h3>Нет новостей</h3>

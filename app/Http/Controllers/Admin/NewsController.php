@@ -10,7 +10,8 @@ use DB, Storage;
 
 class NewsController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $news = News::query()
             ->paginate(5);
 
@@ -18,7 +19,8 @@ class NewsController extends Controller
 
     }
 
-    public function edit(Request $request, News $news) {
+    public function edit(Request $request, News $news)
+    {
 //        dd($news);
         return view('admin.create', [
             'news' => $news,
@@ -26,23 +28,23 @@ class NewsController extends Controller
         ]);
     }
 
-    public function destroy() {
-
+    public function destroy(News $news)
+    {
+        $news->delete();
+        return redirect()->route('admin.index')->with('success', 'Новость успешно удалена.');
     }
 
-    public function update(Request $request, News $news) {
-//        if ($request->isMethod('post')) {
-            if ($request->file('image')) {
-                $path = \Storage::putFile('public/images', $request->file('image'));
-                $url = \Storage::url($path);
-                $news->setAttribute('image', $url);
-            }
-//            dd($request);
-            $news->setAttribute('isPrivate', false);
-            $news->fill($request->all());
-            $news->save();
-            return redirect()->route('admin.index')->with('success', 'Новость успешно отредактирована');
-//        }
+    public function update(Request $request, News $news)
+    {
+        if ($request->file('image')) {
+            $path = \Storage::putFile('public/images', $request->file('image'));
+            $url = \Storage::url($path);
+            $news->setAttribute('image', $url);
+        }
+        $news->setAttribute('isPrivate', false);
+        $news->fill($request->all());
+        $news->save();
+        return redirect()->route('admin.index')->with('success', 'Новость успешно отредактирована');
     }
 
     public function create(Request $request)
