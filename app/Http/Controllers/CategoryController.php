@@ -9,18 +9,15 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::query()->paginate(1);
+        $categories = Category::query()->paginate(2);
         return view('news.category.index')
             ->with('categories', $categories);
     }
 
     public function show($name) {
-        $category = \DB::table('categories')->where('slug', $name)->first();
-//        $news = \DB::table('news')->limit(5)->get();
+
         $category = Category::query()->where('slug', $name)->first();
-        $news = News::query()->paginate(3);
-//        dd($news);
-//        dd($category);
+        $news = News::query()->where('category_id', $category->id)->paginate(3);
 
         if (!empty($category)) {
 
