@@ -18,4 +18,5 @@
     @empty
         <h3>Нет категорий</h3>
     @endforelse
+    {{ $categories->links() }}
 @endsection

@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = \DB::table('categories')->get();
+//        $categories = \DB::table('categories')->get();
+        $categories = Category::query()->paginate(1);
         return view('news.category.index')
             ->with('categories', $categories);
     }
