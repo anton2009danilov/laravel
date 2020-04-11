@@ -30,8 +30,19 @@ class NewsController extends Controller
 
     }
 
-    public function update() {
-
+    public function update(Request $request, News $news) {
+//        if ($request->isMethod('post')) {
+            if ($request->file('image')) {
+                $path = \Storage::putFile('public/images', $request->file('image'));
+                $url = \Storage::url($path);
+                $news->setAttribute('image', $url);
+            }
+//            dd($request);
+            $news->setAttribute('isPrivate', false);
+            $news->fill($request->all());
+            $news->save();
+            return redirect()->route('admin.index')->with('success', 'Новость успешно отредактирована');
+//        }
     }
 
     public function create(Request $request)
