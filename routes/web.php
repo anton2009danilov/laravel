@@ -27,8 +27,13 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    Route::get('/', 'IndexController@index')->name('index');
-    Route::match(['get','post'],'/create', 'IndexController@create')->name('create');
+    //CRUD News
+    Route::get('/', 'NewsController@index')->name('index');
+    Route::match(['get','post'],'/create', 'NewsController@create')->name('create');
+    Route::get('/news/edit/{news}', 'NewsController@edit')->name('edit');
+    Route::post('/news/update/{news}', 'NewsController@update')->name('update');
+    Route::get('/news/destroy/{news}', 'NewsController@destroy')->name('destroy');
+
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
 });

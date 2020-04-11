@@ -17,8 +17,6 @@
             <form enctype="multipart/form-data" method="POST" action="{{ route('admin.create') }}">
                 @csrf
 
-{{--                {{ Form::label('title', 'Название') }}--}}
-
                 <div class="form-group">
                     <label for="title">Заголовок</label>
                     <input name="title" value="{{ old('title') }}" type="text" class="form-control" id="title" placeholder="Заголовок">
