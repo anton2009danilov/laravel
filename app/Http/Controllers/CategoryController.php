@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::query()->paginate(2);
+        $categories = Category::query()->select('id', 'name', 'slug')->paginate(2);
         return view('news.category.index')
             ->with('categories', $categories);
     }
@@ -17,7 +18,10 @@ class CategoryController extends Controller
     public function show($name) {
 
         $category = Category::query()->where('slug', $name)->first();
-        $news = News::query()->where('category_id', $category->id)->paginate(3);
+
+//        $news = News::query()->where('category_id', $category->id)->paginate(3);
+
+        $news = $category->news()->paginate(3);
 
         if (!empty($category)) {
 

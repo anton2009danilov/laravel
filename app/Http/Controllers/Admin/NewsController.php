@@ -21,7 +21,6 @@ class NewsController extends Controller
 
     public function edit(Request $request, News $news)
     {
-//        dd($news);
         return view('admin.create', [
             'news' => $news,
             'categories' => Category::query()->get()
@@ -66,9 +65,8 @@ class NewsController extends Controller
             return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
         }
 
-        $categories = \DB::table('categories')->get();
         return view('admin.create')
-            ->with('categories', $categories)
+            ->with('categories', Category::query()->get())
             ->with('news', $news);
     }
 }
