@@ -33,7 +33,7 @@ class NewsController extends Controller
         return redirect()->route('admin.index')->with('success', 'Новость успешно удалена.');
     }
 
-    public function saveChanges(Request $request, News $news) {
+    private function saveChanges(Request $request, News $news) {
         if ($request->file('image')) {
             $path = \Storage::putFile('public/images', $request->file('image'));
             $url = \Storage::url($path);

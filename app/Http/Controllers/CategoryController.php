@@ -19,8 +19,6 @@ class CategoryController extends Controller
 
         $category = Category::query()->where('slug', $name)->first();
 
-//        $news = News::query()->where('category_id', $category->id)->paginate(3);
-
         $news = $category->news()->paginate(3);
 
         if (!empty($category)) {

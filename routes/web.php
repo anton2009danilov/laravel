@@ -34,8 +34,13 @@ Route::group([
     Route::post('/news/update/{news}', 'NewsController@update')->name('update');
     Route::get('/news/destroy/{news}', 'NewsController@destroy')->name('destroy');
 
+    //CRUD Category
+    Route::get('/category/index', 'CategoryController@index')->name('category.index');
+
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
+
+
 });
 
 
