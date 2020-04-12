@@ -12,7 +12,7 @@
 </li>
 <li class="nav-item">
     <a class="nav-link  {{ request()->routeIs('admin.index')?'active':'' }}"
-       href="{{ route('admin.index', null, false) }}">Админка</a>
+       href="{{ route('admin.news.index', null, false) }}">Админка</a>
 </li>
 <li class="nav-item">
     <a class="nav-link  {{ request()->routeIs('vue')?'active':'' }}" href="{{ route('vue') }}">Vue</a>

@@ -10,7 +10,7 @@
 
 @section('content')
 
-            <h1 class="text-center mt-1">Админка</h1>
+            <h1 class="text-center mt-1">Админка | Новости</h1>
 
 
     <div class="card mt-3">
@@ -20,10 +20,10 @@
 
                     <div class="list-group-item m-2">
                         <h3>{{ $item->title }}</h3>
-                        <a href="{{ route('admin.edit', $item) }}" class="float-right mr-1">
+                        <a href="{{ route('admin.news.edit', $item) }}" class="float-right mr-1">
                             <button type="button" class="btn btn-success">Edit</button>
                         </a>
-                        <a href="{{ route('admin.destroy', $item) }}" class="float-right mr-1">
+                        <a href="{{ route('admin.news.destroy', $item) }}" class="float-right mr-1">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </a>
                         <a href="{{ route('news.show', $item) }}" class="float-right mr-1">

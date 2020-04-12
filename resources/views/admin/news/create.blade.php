@@ -15,7 +15,7 @@
         <div class="card-body">
 
             <form enctype="multipart/form-data" method="POST"
-                  action="@if(!$news->id){{ route('admin.create')}}@else{{ route('admin.update', $news)}} @endif">
+                  action="@if(!$news->id){{ route('admin.news.create')}}@else{{ route('admin.news.update', $news)}} @endif">
                 @csrf
 
                 <div class="form-group">

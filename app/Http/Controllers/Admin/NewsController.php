@@ -15,13 +15,13 @@ class NewsController extends Controller
         $news = News::query()
             ->paginate(5);
 
-        return view('admin.index', ['news' => $news]);
+        return view('admin.news.index', ['news' => $news]);
 
     }
 
     public function edit(Request $request, News $news)
     {
-        return view('admin.create', [
+        return view('admin.news.create', [
             'news' => $news,
             'categories' => Category::query()->get()
         ]);
@@ -30,7 +30,7 @@ class NewsController extends Controller
     public function destroy(News $news)
     {
         $news->delete();
-        return redirect()->route('admin.index')->with('success', 'Новость успешно удалена.');
+        return redirect()->route('admin.news.index')->with('success', 'Новость успешно удалена.');
     }
 
     private function saveChanges(Request $request, News $news) {
@@ -49,7 +49,7 @@ class NewsController extends Controller
 
         $this->saveChanges($request, $news);
 
-        return redirect()->route('admin.index')->with('success', 'Новость успешно отредактирована');
+        return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
     }
 
     public function create(Request $request)
@@ -62,10 +62,10 @@ class NewsController extends Controller
 
             $this->saveChanges($request, $news);
 
-            return redirect()->route('admin.index')->with('success', 'Новость успешно добавлена.');
+            return redirect()->route('admin.news.index')->with('success', 'Новость успешно добавлена.');
         }
 
-        return view('admin.create')
+        return view('admin.news.create')
             ->with('categories', Category::query()->get())
             ->with('news', $news);
     }
