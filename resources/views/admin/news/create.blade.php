@@ -2,7 +2,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent Админка-Тест1
+    @parent Админка | Создать\Редактировать Новость
 @endsection
 
 @section('menu')

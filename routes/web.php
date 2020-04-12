@@ -36,6 +36,8 @@ Route::group([
 
     //CRUD Category
     Route::get('/category/index', 'CategoryController@index')->name('category.index');
+    Route::match(['get','post'],'/category/create', 'CategoryController@create')->name('category.create');
+    Route::post('/category/update/{category}', 'CategoryController@update')->name('category.update');
 
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
