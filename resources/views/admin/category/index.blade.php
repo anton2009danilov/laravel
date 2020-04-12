@@ -21,6 +21,12 @@
                             <div class="card mt-3">
                                 <div class="card-body">
                                     <h2>{{ $category->name }}</h2>
+                                    <a href="{{ route('admin.category.edit', $category) }}" class="float-right mr-1">
+                                        <button type="button" class="btn btn-success">Edit</button>
+                                    </a>
+                                    <a href="{{ route('admin.category.destroy', $category) }}" class="float-right mr-1">
+                                        <button type="button" class="btn btn-danger">Delete</button>
+                                    </a>
                                     <a href="{{ route('news.category.show', $category->slug) }}" class="float-right mr-1">
                                         <button type="button" class="btn btn-primary">Show</button>
                                     </a>

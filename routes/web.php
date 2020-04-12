@@ -37,7 +37,9 @@ Route::group([
     //CRUD Category
     Route::get('/category/index', 'CategoryController@index')->name('category.index');
     Route::match(['get','post'],'/category/create', 'CategoryController@create')->name('category.create');
+    Route::get('/category/edit/{category}', 'CategoryController@edit')->name('category.edit');
     Route::post('/category/update/{category}', 'CategoryController@update')->name('category.update');
+    Route::get('/category/destroy/{category}', 'CategoryController@destroy')->name('category.destroy');
 
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
