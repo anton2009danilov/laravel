@@ -19,13 +19,13 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Название</label>
-                    <input name="name" value="{{ $category->name ?? old('name') }}" type="text" class="form-control"
+                    <input name="name" required value="{{ $category->name ?? old('name') }}" type="text" class="form-control"
                            id="name" placeholder="Название">
                 </div>
 
                 <div class="form-group">
                     <label for="slug">Псевдоним</label>
-                    <input name="slug" value="{{ $category->slug ?? old('slug') }}" type="text" class="form-control"
+                    <input name="slug" required value="{{ $category->slug ?? old('slug') }}" type="text" class="form-control"
                            id="slug" placeholder="Псевдоним">
                 </div>
 

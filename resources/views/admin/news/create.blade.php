@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <label for="title">Заголовок</label>
-                    <input name="title" value="{{ $news->title ?? old('title') }}" type="text" class="form-control"
+                    <input name="title" required value="{{ $news->title ?? old('title') }}" type="text" class="form-control"
                            id="title" placeholder="Заголовок">
                 </div>
                 <div class="form-group">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="text">Текст новости</label>
-                    <textarea name="text" class="form-control" id="text"
+                    <textarea name="text" required class="form-control" id="text"
                               rows="3">{{ $news->text ?? old('text') }}</textarea>
                 </div>
 
