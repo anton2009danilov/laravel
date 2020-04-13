@@ -30,7 +30,6 @@ class CategoryController extends Controller
         $category = new Category();
 
         if ($request->isMethod('post')) {
-//            dd($request, $category);
             $this->saveChanges($request, $category);
             return redirect()->route('admin.category.index')->with('success', 'Категория успешно добавлена.');
         }
