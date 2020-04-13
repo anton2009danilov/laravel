@@ -33,7 +33,7 @@ class NewsController extends Controller
         return redirect()->route('admin.news.index')->with('success', 'Новость успешно удалена.');
     }
 
-    private function saveChanges(Request $request, News $news)
+    private function validateAndSaveChanges(Request $request, News $news)
     {
         if ($request->file('image')) {
             $path = \Storage::putFile('public/images', $request->file('image'));
@@ -41,7 +41,7 @@ class NewsController extends Controller
             $news->setAttribute('image', $url);
 
         }
-        $data = $this->validate($request, News::rules());
+        $data = $this->validate($request, News::rules(), [], News::attributeNames());
         $news->fill($data);
 
         return $news->save();
@@ -51,7 +51,7 @@ class NewsController extends Controller
     {
         $news->setAttribute('isPrivate', false);
 
-        $this->saveChanges($request, $news);
+        $this->validateAndSaveChanges($request, $news);
 
         return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
     }
@@ -63,7 +63,7 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $url = null;
             $request->flash();
-            $result = $this->saveChanges($request, $news);
+            $result = $this->validateAndSaveChanges($request, $news);
             if ($result) {
                 return redirect()->route('admin.news.index')->with('success', 'Новость успешно добавлена.');
             } else {

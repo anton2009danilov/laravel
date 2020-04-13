@@ -23,4 +23,13 @@ class News extends Model
             'isPrivate' => "boolean|nullable",
         ];
     }
+
+    public static function attributeNames() {
+        return [
+            'title' => 'Заголовок',
+            'text' => 'Текст',
+            'category_id' => 'Категория',
+            'image' => 'Изображение'
+        ];
+    }
 }
