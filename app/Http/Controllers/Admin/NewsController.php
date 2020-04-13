@@ -41,7 +41,7 @@ class NewsController extends Controller
             $news->setAttribute('image', $url);
 
         }
-
+        $request->flash();
         $data = $this->validate($request, News::rules());
         $news->fill($data);
 
@@ -64,7 +64,6 @@ class NewsController extends Controller
         if ($request->isMethod('post')) {
             $url = null;
             $result = $this->saveChanges($request, $news);
-
             if ($result) {
                 return redirect()->route('admin.news.index')->with('success', 'Новость успешно добавлена.');
             } else {

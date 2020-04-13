@@ -13,7 +13,6 @@
     <div class="card mt-3">
         <div class="card-header font-weight-bold">Форма для добавление новости</div>
         <div class="card-body">
-
             <form enctype="multipart/form-data" method="POST"
                   action="@if(!$news->id){{ route('admin.news.create')}}@else{{ route('admin.news.update', $news)}} @endif">
                 @csrf
@@ -39,7 +38,7 @@
                                 id="category_id">
                             @foreach ($categories as $category)
                                 <option
-                                    @if ($category->id == $news->category_id || $category->id == old('category')) selected
+                                    @if ($category->id == $news->category_id || $category->id == old('category_id')) selected
                                     @endif value="{{ $category->id }}"> {{ $category->name }} </option>
                             @endforeach
                             {{--                                <option value="33">33</option>--}}
@@ -59,9 +58,7 @@
                     <label for="text">Текст новости</label>
                     <textarea name="text"
                               class="form-control @if($errors->has('text')) is-invalid @endif"
-                              id="text" rows="3">
-                        {{ $news->text ?? old('text') }}
-                    </textarea>
+                              id="text" rows="3">{{ $news->text ?? old('text') }}</textarea>
 
                     @if($errors->has('text'))
                         <small class="text-danger">
@@ -103,7 +100,7 @@
                 </div>
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-outline-primary form-control">
-                        @if ($news->id) Изменить @else Добавить @endif
+                        @if ($news->id){{__('Изменить')}}@else{{__('Добавить')}}@endif
                     </button>
                 </div>
 
