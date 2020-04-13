@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Rules\Jedi;
 use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
@@ -16,7 +17,7 @@ class News extends Model
     public static function rules() {
         $tableNameCategory = (new Category())->getTable();
         return [
-            'title' => 'required|min:5|max:25',
+            'title' => ['required', 'min:5', 'max:25', new Jedi()],
             'text' => 'required|min:15',
             'category_id' => "required|exists:{$tableNameCategory},id",
             'image' => 'mimes:jpeg,bmp,png|max:1000',

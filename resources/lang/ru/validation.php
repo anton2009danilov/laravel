@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'jedi'        => 'Не джедай Вы есть.',
     'accepted'        => 'Вы должны принять :attribute.',
     'active_url'      => 'Поле :attribute содержит недействительный URL.',
     'after'           => 'В поле :attribute должна быть дата после :date.',
