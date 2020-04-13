@@ -19,8 +19,8 @@ class News extends Model
             'title' => 'required|min:5|max:25',
             'text' => 'required|min:15',
             'category_id' => "required|exists:{$tableNameCategory},id",
-            'images' => 'mimes:jpeg,bmp,png|max:1000',
-            'isPrivate' => "boolean"
+            'image' => 'mimes:jpeg,bmp,png|max:1000',
+            'isPrivate' => "boolean|nullable",
         ];
     }
 }
