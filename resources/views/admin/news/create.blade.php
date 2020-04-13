@@ -10,6 +10,7 @@
 @endsection
 
 @section('content')
+    @dump($errors->first('title'))
     <div class="card mt-3">
         <div class="card-header font-weight-bold">Форма для добавление новости</div>
         <div class="card-body">
@@ -20,8 +21,14 @@
 
                 <div class="form-group">
                     <label for="title">Заголовок</label>
-                    <input name="title" required value="{{ $news->title ?? old('title') }}" type="text" class="form-control"
+                    <input name="title" value="{{ $news->title ?? old('title') }}" type="text"
+                           class="form-control @if($errors->first('title')) is-invalid @endif"
                            id="title" placeholder="Заголовок">
+                    @if($errors->first('title'))
+                        <small class="text-danger">
+                            {{ $errors->first('title') }}
+                        </small>
+                    @endif
                 </div>
                 <div class="form-group">
                     <label for="category_id">Категория</label>
@@ -39,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <label for="text">Текст новости</label>
-                    <textarea name="text" required class="form-control" id="text"
+                    <textarea name="text" class="form-control" id="text"
                               rows="3">{{ $news->text ?? old('text') }}</textarea>
                 </div>
 
