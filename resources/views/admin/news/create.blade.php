@@ -71,13 +71,13 @@
 
                 <div class="form-group">
                     <input type="file" name="image"
-                    @if($errors->has('image')) class="bg-danger" @endif>
+                           @if($errors->has('image')) class="bg-danger" @endif>
 
                     @if($errors->has('image'))
                         <small class="text-danger">
-                                @foreach($errors->get('image') as $error)
-                                    {{ $error }}
-                                @endforeach
+                            @foreach($errors->get('image') as $error)
+                                {{ $error }}
+                            @endforeach
                         </small>
                     @endif
                 </div>
@@ -99,9 +99,9 @@
                     @endif
                 </div>
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-outline-primary form-control">
-                        @if ($news->id){{__('Изменить')}}@else{{__('Добавить')}}@endif
-                    </button>
+                    <button type="submit"
+                            class="btn btn-outline-primary
+                            form-control">@if ($news->id){{__('Изменить')}} @else{{__('Добавить')}}@endif</button>
                 </div>
 
             </form>
