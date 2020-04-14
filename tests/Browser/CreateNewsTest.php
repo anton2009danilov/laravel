@@ -20,8 +20,8 @@ class CreateNewsTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin/news/create')
                     ->assertRouteIs('admin.news.create')
-
                     ->assertSee('Форма для добавление новости')
+
                     ->press('Добавить')
                     ->assertSee('Поле Заголовок обязательно для заполнения')
 
@@ -32,6 +32,30 @@ class CreateNewsTest extends DuskTestCase
                     ->type('title', 'В Россию доставили штамм коронавируса из США!!!!!!!')
                     ->press('Добавить')
                     ->assertSee('Количество символов в поле Заголовок не может превышать 25.');
+        });
+    }
+
+    public function testCategoryIdForm() {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/news/create')
+                ->assertRouteIs('admin.news.create')
+                ->select('category_id', '33')
+                ->press('Добавить')
+                ->assertSee('Выбранное значение для Категория некорректно.');
+        });
+    }
+
+    public function testTextForm()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin/news/create')
+                ->assertRouteIs('admin.news.create')
+                ->press('Добавить')
+                ->assertSee('Поле Текст обязательно для заполнения.')
+
+                ->type('text', 'Всему конец!')
+                ->press('Добавить')
+                ->assertSee('Количество символов в поле Текст должно быть не менее 15.');
         });
     }
 
