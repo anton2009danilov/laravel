@@ -41,7 +41,7 @@
                                     @if ($category->id == $news->category_id || $category->id == old('category_id')) selected
                                     @endif value="{{ $category->id }}"> {{ $category->name }} </option>
                             @endforeach
-                            {{--                                <option value="33">33</option>--}}
+                                <option value="33">33</option>
                         </select>
                         @if($errors->has('category_id'))
                             <small class="text-danger">
