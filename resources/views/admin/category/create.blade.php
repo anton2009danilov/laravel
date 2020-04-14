@@ -38,7 +38,7 @@
                            id="slug" placeholder="Псевдоним">
                     @if($errors->has('slug'))
                         <small class="text-danger">
-                            @foreach($errors->get('name') as $error)
+                            @foreach($errors->get('slug') as $error)
                                 {{ $error }}
                             @endforeach
                         </small>

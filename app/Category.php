@@ -15,7 +15,7 @@ class Category extends Model
     public static function rules() {
         return [
             'name' => ['required', 'min:5', 'max:25'],
-            'slug' => 'required|max:15',
+            'slug' => 'required|min:3|max:15',
         ];
     }
 

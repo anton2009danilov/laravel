@@ -17,9 +17,10 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Добро пожаловать');
+                    ->assertSee('Добро пожаловать'); //тест работает везде и в консоли и в phpstorm
 //                    ->visitRoute('admin.news.create')
-//                    ->assertSee('Show'); Это не работает на виртуальной машине, тесты форм тоже не работают там.
+//                    ->assertSee('Show');
+                    // Эти ^^^^ и другие тесты не проходят в консоли phpstorm и консоли виртуальной машины.
         });
     }
 }
