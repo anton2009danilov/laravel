@@ -19,14 +19,30 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Название</label>
-                    <input name="name" value="{{ $category->name ?? old('name') }}" type="text" class="form-control"
+                    <input name="name" value="{{ $category->name ?? old('name') }}" type="text"
+                           class="form-control @if($errors->has('name')) is-invalid @endif"
                            id="name" placeholder="Название">
+                    @if($errors->has('name'))
+                        <small class="text-danger">
+                            @foreach($errors->get('name') as $error)
+                                {{ $error }}
+                            @endforeach
+                        </small>
+                    @endif
                 </div>
 
                 <div class="form-group">
                     <label for="slug">Псевдоним</label>
-                    <input name="slug" value="{{ $category->slug ?? old('slug') }}" type="text" class="form-control"
+                    <input name="slug" value="{{ $category->slug ?? old('slug') }}" type="text"
+                           class="form-control @if($errors->has('slug')) is-invalid @endif"
                            id="slug" placeholder="Псевдоним">
+                    @if($errors->has('slug'))
+                        <small class="text-danger">
+                            @foreach($errors->get('name') as $error)
+                                {{ $error }}
+                            @endforeach
+                        </small>
+                    @endif
                 </div>
 
                 <div class="col-sm-10">
