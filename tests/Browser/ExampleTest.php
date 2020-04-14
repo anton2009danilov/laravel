@@ -17,7 +17,9 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Главная');
+                    ->assertSee('Добро пожаловать');
+//                    ->visitRoute('admin.news.create')
+//                    ->assertSee('Show'); Это не работает на виртуальной машине, тесты форм тоже не работают там.
         });
     }
 }
