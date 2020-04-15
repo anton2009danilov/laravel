@@ -22,7 +22,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Название</label>
-                    <input name="name" value="{{ $category->name ?? old('name') }}" type="text"
+                    <input name="name" value="{{ old('name') ?? $category->name }}" type="text"
                            class="form-control @if($errors->has('name')) is-invalid @endif"
                            id="name" placeholder="Название">
                     @if($errors->has('name'))

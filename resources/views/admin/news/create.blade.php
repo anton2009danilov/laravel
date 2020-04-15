@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <label for="title">Заголовок</label>
-                    <input name="title" value="{{ $news->title ?? old('title') }}" type="text"
+                    <input name="title" value="{{  old('title') ?? $news->title }}" type="text"
                            class="form-control @if($errors->has('title')) is-invalid @endif"
                            id="title" placeholder="Заголовок">
                     @if($errors->has('title'))
@@ -39,7 +39,7 @@
                                 id="category_id">
                             @foreach ($categories as $category)
                                 <option
-                                    @if ($category->id == $news->category_id || $category->id == old('category_id')) selected
+                                    @if ($category->id == old('category_id') || $category->id == $news->category_id) selected
                                     @endif value="{{ $category->id }}"> {{ $category->name }} </option>
                             @endforeach
                                 <option value="33">33</option>
@@ -59,7 +59,7 @@
                     <label for="text">Текст новости</label>
                     <textarea name="text"
                               class="form-control @if($errors->has('text')) is-invalid @endif"
-                              id="text" rows="3">{{ $news->text ?? old('text') }}</textarea>
+                              id="text" rows="3">{{ old('text') ?? $news->text }}</textarea>
 
                     @if($errors->has('text'))
                         <small class="text-danger">
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="form-group form-check">
-                    <input @if ($news->isPrivate == 1 || old('isPrivate') == 1) checked @endif
+                    <input @if (old('isPrivate') == 1 || $news->isPrivate == 1) checked @endif
                     type="checkbox" value="1" name="isPrivate" class="form-check-input" id="private">
                     <label class="form-check-label" for="private">
                         Доступно только зарегистрированным пользователям

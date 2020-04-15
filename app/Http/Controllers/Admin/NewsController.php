@@ -44,14 +44,22 @@ class NewsController extends Controller
         $data = $this->validate($request, News::rules(), [], News::attributeNames());
         $news->fill($data);
 
+
         return $news->save();
+
     }
 
     public function update(Request $request, News $news)
     {
-        $this->validateAndSaveChanges($request, $news);
-
-        return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
+        $request->flash();
+//        dd(old());
+        $result = $this->validateAndSaveChanges($request, $news);
+        if ($result) {
+            return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
+        } else {
+            return redirect()->route('admin.news.create')
+                ->with('error', 'Ошибка редактирования новости.');
+        }
     }
 
     public function create(Request $request)
