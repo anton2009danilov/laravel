@@ -15,14 +15,14 @@ class Category extends Model
     public static function rules() {
         return [
             'name' => ['required', 'min:5', 'max:25'],
-            'slug' => 'required|min:3|max:15',
+//            'slug' => 'required|min:3|max:15',
         ];
     }
 
     public static function attributeNames() {
         return [
             'name' => 'Название',
-            'slug' => 'Псевдоним',
+//            'slug' => 'Псевдоним',
         ];
     }
 

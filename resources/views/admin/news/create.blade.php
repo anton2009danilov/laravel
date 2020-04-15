@@ -4,14 +4,15 @@
 @section('title')
     @parent Админка | Создать\Редактировать Новость
 @endsection
-
 @section('menu')
     @include('admin.menu')
 @endsection
-
 @section('content')
     <div class="card mt-3">
-        <div class="card-header font-weight-bold">Форма для добавление новости</div>
+        <div class="card-header font-weight-bold">
+            @if ($news->id){{__('Форма для редактирования новости')}}
+            @else{{__('Форма для добавление новости')}}@endif
+        </div>
         <div class="card-body">
             <form enctype="multipart/form-data" method="POST"
                   action="@if(!$news->id){{ route('admin.news.create')}}@else{{ route('admin.news.update', $news)}} @endif">

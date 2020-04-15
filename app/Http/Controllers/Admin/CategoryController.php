@@ -17,6 +17,7 @@ class CategoryController extends Controller
     private function validateAndSaveChanges(Request $request, Category $category) {
         $data = $this->validate($request, Category::rules(), [], Category::attributeNames());
         $category->fill($data);
+        $category->slug = \Str::slug($category->name);
 
         return $category->save();
     }

@@ -19,7 +19,7 @@ class NewsController extends Controller
 
     }
 
-    public function edit(Request $request, News $news)
+    public function edit(News $news)
     {
         return view('admin.news.create', [
             'news' => $news,
@@ -38,7 +38,7 @@ class NewsController extends Controller
         if ($request->file('image')) {
             $path = \Storage::putFile('public/images', $request->file('image'));
             $url = \Storage::url($path);
-            $news->setAttribute('image', $url);
+            $news->image = $url;
 
         }
         $data = $this->validate($request, News::rules(), [], News::attributeNames());
@@ -49,8 +49,6 @@ class NewsController extends Controller
 
     public function update(Request $request, News $news)
     {
-        $news->setAttribute('isPrivate', false);
-
         $this->validateAndSaveChanges($request, $news);
 
         return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
