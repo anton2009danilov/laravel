@@ -52,6 +52,14 @@ Route::group([
         Route::get('/category/destroy/{category}', 'CategoryController@destroy')->name('destroy');
     });
 
+    //Users
+    Route::group([
+        'as' => 'users.'
+    ], function () {
+        Route::get('/users/index', 'UserController@index')->name('index');
+        Route::post('/users/update/{user}', 'UserController@update')->name('update');
+    });
+
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
 

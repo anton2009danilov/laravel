@@ -23,6 +23,7 @@ class UserSeeder extends Seeder
             'created_at' => '2020-04-17 17:21:08',
             'updated_at' => '2020-04-17 17:21:08'
         ]);
+        factory(User::class, 10)->create();
     }
 }
 
