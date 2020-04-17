@@ -23,11 +23,9 @@
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->name }}" autocomplete="name" autofocus>
 
                         @error('name')
-                            <small class="text-danger">
-                                @foreach($errors->get('name') as $error)
-                                    {{ $error }}
-                                @endforeach
-                            </small>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                         @enderror
                     </div>
                 </div>

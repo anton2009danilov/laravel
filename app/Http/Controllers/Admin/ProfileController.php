@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,9 @@ class ProfileController extends Controller
         $errors = [];
 
         if ($request->isMethod('post')) {
+            $this->validate($request, User::rules());
             if (Hash::check($request->post('password'), $user->password)) {
+
                 $user->fill([
                     'name' => $request->post('name'),
                     'password' => Hash::make($request->post('new_password')),
