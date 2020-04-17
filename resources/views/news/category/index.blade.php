@@ -18,5 +18,7 @@
     @empty
         <h3>Нет категорий</h3>
     @endforelse
-    {{ $categories->links() }}
+    <div class="mt-1">
+        {{ $categories->links() }}
+    </div>
 @endsection
