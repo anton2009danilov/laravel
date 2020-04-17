@@ -33,21 +33,6 @@
                         </small>
                     @endif
                 </div>
-
-{{--                <div class="form-group">--}}
-{{--                    <label for="slug">Псевдоним</label>--}}
-{{--                    <input name="slug" value="{{ $category->slug ?? old('slug') }}" type="text"--}}
-{{--                           class="form-control @if($errors->has('slug')) is-invalid @endif"--}}
-{{--                           id="slug" placeholder="Псевдоним">--}}
-{{--                    @if($errors->has('slug'))--}}
-{{--                        <small class="text-danger">--}}
-{{--                            @foreach($errors->get('slug') as $error)--}}
-{{--                                {{ $error }}--}}
-{{--                            @endforeach--}}
-{{--                        </small>--}}
-{{--                    @endif--}}
-{{--                </div>--}}
-
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-outline-primary form-control">
                         @if ($category->id) Изменить @else Добавить @endif
