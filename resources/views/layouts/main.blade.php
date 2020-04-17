@@ -55,7 +55,7 @@
                             </form>
 
                             <a class="dropdown-item"  href="{{ route('admin.updateProfile') }}">
-                                Профиль
+                                Изменить профиль
                             </a>
 
                         </div>

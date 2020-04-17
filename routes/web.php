@@ -53,7 +53,7 @@ Route::group([
 
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
-    Route::match(['get', 'post'], '/profile','ProfileController@update')->name('updateProfile');
+    Route::match(['get', 'post'], '/profile/','ProfileController@update')->name('updateProfile');
 
 
 });
