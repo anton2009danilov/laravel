@@ -25,7 +25,8 @@ Route::get('/', 'HomeController@index')->name('Home');
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'as' => 'admin.'
+    'as' => 'admin.',
+    'middleware' => 'auth'
 ], function () {
         Route::get('/', 'NewsController@index')->name('news.index');
 
