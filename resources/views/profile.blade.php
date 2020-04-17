@@ -13,7 +13,7 @@
         <div class="card-header">Изменение учётных данных пользователя</div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.updateProfile') }}">
+            <form method="POST" action="{{ route('updateProfile') }}">
                 @csrf
 
                 <div class="form-group row">
