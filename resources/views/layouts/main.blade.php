@@ -54,7 +54,7 @@
                                 @csrf
                             </form>
 
-                            <a class="dropdown-item"  href="{{ route('admin.updateProfile') }}">
+                            <a class="dropdown-item"  href="{{ route('updateProfile') }}">
                                 Изменить профиль
                             </a>
 

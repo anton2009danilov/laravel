@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
@@ -30,10 +30,10 @@ class ProfileController extends Controller
             } else {
                 $errors['password'][] = 'Неверно введен текущий пароль';
             }
-            return redirect()->route('admin.updateProfile')->withErrors($errors);
+            return redirect()->route('updateProfile')->withErrors($errors);
         }
 
-        return view('admin.profile', [
+        return view('profile', [
             'user' => $user
         ]);
     }
