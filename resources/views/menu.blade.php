@@ -10,10 +10,14 @@
     <a class="nav-link  {{ request()->routeIs('news.category.index')?'active':'' }}"
        href="{{ route('news.category.index') }}">Категории</a>
 </li>
+@if (\Auth::user())
+    @if (\Auth::user()->isAdmin)
 <li class="nav-item">
     <a class="nav-link  {{ request()->routeIs('admin.index')?'active':'' }}"
        href="{{ route('admin.news.index', null, false) }}">Админка</a>
 </li>
+    @endif
+@endif
 
 {{--<li class="nav-item">--}}
 {{--    <a class="nav-link  {{ request()->routeIs('vue')?'active':'' }}" href="{{ route('vue') }}">Vue</a>--}}

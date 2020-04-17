@@ -26,7 +26,7 @@ Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
     'as' => 'admin.',
-    'middleware' => 'auth'
+    'middleware' => ['auth', 'isAdmin']
 ], function () {
         Route::get('/', 'NewsController@index')->name('news.index');
 
