@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent Админка
+    @parent Админка | Новости
 @endsection
 
 @section('menu')

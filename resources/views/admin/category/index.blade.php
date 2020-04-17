@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent Админка
+    @parent Админка | Категории
 @endsection
 
 @section('menu')

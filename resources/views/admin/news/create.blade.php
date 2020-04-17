@@ -42,7 +42,7 @@
                                     @if ($category->id == old('category_id') || $category->id == $news->category_id) selected
                                     @endif value="{{ $category->id }}"> {{ $category->name }} </option>
                             @endforeach
-                                <option value="33">33</option>
+{{--                                <option value="33">33</option>--}}
                         </select>
                         @if($errors->has('category_id'))
                             <small class="text-danger">
@@ -59,8 +59,7 @@
                     <label for="text">Текст новости</label>
                     <textarea name="text"
                               class="form-control @if($errors->has('text')) is-invalid @endif"
-                              id="text" rows="3">{{ old('text') ?? $news->text }}</textarea>
-
+                              id="text" rows="3">@if(\Arr::has(old(), 'text') && old('text') == null)@else{{ old('text') ?? $news->text }}@endif</textarea>
                     @if($errors->has('text'))
                         <small class="text-danger">
                             @foreach($errors->get('text') as $error)
