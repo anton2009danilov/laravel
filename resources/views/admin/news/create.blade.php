@@ -1,4 +1,3 @@
-<?php //$categories = []?>
 @extends('layouts.main')
 
 @section('title')
@@ -59,7 +58,7 @@
                     <label for="text">Текст новости</label>
                     <textarea name="text"
                               class="form-control @if($errors->has('text')) is-invalid @endif"
-                              id="text" rows="3">@if(\Arr::has(old(), 'text') && old('text') == null)@else{{ old('text') ?? $news->text }}@endif</textarea>
+                              id="text" rows="3">@if(Arr::has(old(), 'text') && old('text') == null)@else{{ old('text') ?? $news->text }}@endif</textarea>
                     @if($errors->has('text'))
                         <small class="text-danger">
                             @foreach($errors->get('text') as $error)

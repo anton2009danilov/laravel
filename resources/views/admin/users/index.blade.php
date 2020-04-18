@@ -24,9 +24,12 @@
 
                         <form action="{{ route('admin.users.update', $item) }}" method="post" >
                             @csrf
-                            <input type="checkbox" name="isAdmin" hidden value="@if($item->isAdmin){{__('1')}}@else{{__('0')}}@endif">
-                            <button type="submit" class="btn btn-success float-right mr-1">@if(!$item->isAdmin){{__('Назначить администратором')}}
-                                @else{{__('Убрать из списка администраторов')}}@endif</button>
+                            <input type="checkbox" name="isAdmin" hidden value="@if($item->isAdmin){{__('true')}}@else{{__('false')}}@endif">
+                            @if(!$item->isAdmin)
+                            <button type="submit" class="btn btn-success float-right mr-1">{{__('Назначить администратором')}}</button>
+                            @else
+                                <button type="submit" class="btn btn-danger float-right mr-1">{{__('Убрать из списка администраторов')}}</button>
+                            @endif
                         </form>
 
 
