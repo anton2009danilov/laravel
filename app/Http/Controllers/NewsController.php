@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index() {
-//        $news = News::all();
         $news = News::query()
-//            ->where('isPrivate', false)
             ->paginate(3);
 
         return view('news.index')
@@ -20,7 +18,6 @@ class NewsController extends Controller
     }
 
     public function show($id) {
-//        $news = \DB::table('news')->find($id);
         $news = News::query()->find($id);
 
         if (!empty($news)) {

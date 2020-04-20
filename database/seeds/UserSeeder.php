@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@admin.ru',
             'email_verified_at' => null,
-            'password' => '$2y$10$s/AtztyvC5LQc9QJdYz/x.kEk9KpGtJ0r9IUu.JchP1Kay8/1ebza',
+            'password' => Hash::make('123'),
             'remember_token' => null,
             'isAdmin' => true,
             'created_at' => now(),
