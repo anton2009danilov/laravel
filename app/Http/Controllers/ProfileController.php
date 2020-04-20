@@ -16,6 +16,10 @@ class ProfileController extends Controller
         $errors = [];
 
         if ($request->isMethod('post')) {
+            if(!$request['new_password']) {
+                $request['new_password'] = $request['password'];
+            }
+
             $this->validate($request, User::rules());
             if (Hash::check($request->post('password'), $user->password)) {
 
