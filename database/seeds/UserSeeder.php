@@ -20,8 +20,8 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$s/AtztyvC5LQc9QJdYz/x.kEk9KpGtJ0r9IUu.JchP1Kay8/1ebza',
             'remember_token' => null,
             'isAdmin' => true,
-            'created_at' => '2020-04-17 17:21:08',
-            'updated_at' => '2020-04-17 17:21:08'
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         factory(User::class, 10)->create();
     }
