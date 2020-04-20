@@ -40,7 +40,7 @@ class User extends Authenticatable
     public static function rules() {
         return [
             'name' => ['required', 'min:3', 'max:25'],
-            'email' => 'required|min:6|email',
+            'email' => 'required|min:6|email|unique:users,email',
         ];
     }
 }
