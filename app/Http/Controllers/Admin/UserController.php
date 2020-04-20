@@ -26,6 +26,6 @@ class UserController extends Controller
             $user->isAdmin = true;
         }
         $user->save();
-        return redirect()->route('admin.users.index');
+        return redirect()->back()->with('success', 'Права пользователя изменены.');
     }
 }

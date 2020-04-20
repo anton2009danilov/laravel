@@ -8,7 +8,7 @@
 
 @section('content')
 
-    @if (!$news->isPrivate === true)
+    @if (!$news->isPrivate || Auth::check())
     <div class="card mt-3">
         <div class="card-header">{{ $news->title }}</div>
         <div class="card-img"

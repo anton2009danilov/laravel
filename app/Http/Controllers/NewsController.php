@@ -11,7 +11,7 @@ class NewsController extends Controller
     public function index() {
 //        $news = News::all();
         $news = News::query()
-            ->where('isPrivate', false)
+//            ->where('isPrivate', false)
             ->paginate(3);
 
         return view('news.index')
