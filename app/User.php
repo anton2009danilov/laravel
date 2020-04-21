@@ -42,6 +42,8 @@ class User extends Authenticatable
             'name' => ['required', 'min:3', 'max:25'],
 //            'email' => 'required|min:6|email',
             'email' => 'required|min:6|email|unique:users,email',
+            'password' =>'required',
+            'new_password' => 'required'
         ];
     }
 }

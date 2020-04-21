@@ -29,6 +29,8 @@ Route::group([
     'as' => 'admin.',
     'middleware' => ['auth', 'isAdmin']
 ], function () {
+        Route::get('/parser', 'ParserController@index')->name('parser');
+
         Route::get('/', 'NewsController@index')->name('news.index');
 
     //CRUD News
