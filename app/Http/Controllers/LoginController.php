@@ -22,6 +22,6 @@ class LoginController extends Controller
         }
         $user = Socialite::driver('vkontakte')->user();
         $userInSystem = $userAdaptor->getUserBySocId($user, 'vk');
-        dd($userInSystem);
+//        dd($userInSystem);
     }
 }

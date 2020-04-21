@@ -19,11 +19,12 @@ class Adaptor
                 'name' => !empty($user->getName())? $user->getName(): '',
                 'email' => $user->accessTokenResponseBody['email'],
                 'password' => '',
-                'id_in_soc' => !empty($user->getId()? $user->getId(): ''),
+                'id_in_soc' => !empty($user->getId())? $user->getId(): '',
                 'type_auth' => $socName,
                 'avatar' => !empty($user->getAvatar())? $user->getAvatar(): ''
             ]);
-            dd($userInSystem);
+            $userInSystem->save();
         }
+        return $userInSystem;
     }
 }
