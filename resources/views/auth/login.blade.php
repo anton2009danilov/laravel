@@ -76,6 +76,16 @@
                             </div>
                         </div>
                     </form>
+                    <div class="form-group row mt-1">
+                        <div class="col-md-8 offset-md-4">
+                            <a class="nav-link" href="{{ route('vkLogin') }}">
+                                <button type="submit" class="btn-block btn-outline-success">
+                                    {{ __('Войти через VK') }}
+                                </button>
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
