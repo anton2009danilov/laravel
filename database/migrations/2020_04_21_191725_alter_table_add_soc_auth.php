@@ -35,7 +35,7 @@ class AlterTableAddSocAuth extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['id_in_soc', 'type_aut', 'avatar']);
+            $table->dropColumn(['id_in_soc', 'type_auth', 'avatar']);
         });
     }
 }
