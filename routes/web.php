@@ -27,10 +27,24 @@ Route::group([
     'namespace' => 'Admin',
     'as' => 'admin.'
 ], function () {
-    Route::get('/', 'IndexController@index')->name('index');
-    Route::match(['get','post'],'/create', 'IndexController@create')->name('create');
+    //CRUD News
+    Route::get('/', 'NewsController@index')->name('news.index');
+    Route::match(['get','post'],'/news/create', 'NewsController@create')->name('news.create');
+    Route::get('/news/edit/{news}', 'NewsController@edit')->name('news.edit');
+    Route::post('/news/update/{news}', 'NewsController@update')->name('news.update');
+    Route::get('/news/destroy/{news}', 'NewsController@destroy')->name('news.destroy');
+
+    //CRUD Category
+    Route::get('/category/index', 'CategoryController@index')->name('category.index');
+    Route::match(['get','post'],'/category/create', 'CategoryController@create')->name('category.create');
+    Route::get('/category/edit/{category}', 'CategoryController@edit')->name('category.edit');
+    Route::post('/category/update/{category}', 'CategoryController@update')->name('category.update');
+    Route::get('/category/destroy/{category}', 'CategoryController@destroy')->name('category.destroy');
+
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
+
+
 });
 
 
@@ -47,7 +61,7 @@ Route::group([
     'as' => 'news.'
 ], function() {
     Route::get('/', 'NewsController@index')->name('index');
-    Route::get('/One/{id}', 'NewsController@show')->name('show');
+    Route::get('/One/{news}', 'NewsController@show')->name('show');
     Route::group([
         'as' => 'category.'
     ], function() {

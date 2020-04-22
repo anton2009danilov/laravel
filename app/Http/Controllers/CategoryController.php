@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\News;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = \DB::table('categories')->get();
+        $categories = Category::query()->select('id', 'name', 'slug')->paginate(2);
         return view('news.category.index')
             ->with('categories', $categories);
     }
 
     public function show($name) {
-        $category = \DB::table('categories')->where('slug', $name)->first();
-        $news = \DB::table('news')->limit(5)->get();
-//        dd($news);
-//        dd($category);
+
+        $category = Category::query()->where('slug', $name)->first();
+
+        $news = $category->news()->paginate(3);
 
         if (!empty($category)) {
 

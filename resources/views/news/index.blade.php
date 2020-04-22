@@ -19,7 +19,7 @@
                                          asset('storage/default.jpg') }})">
                         </div>
                         @if (!$item->isPrivate === true)
-                            <a href="{{ route('news.show', $item->id) }}" class="float-right small pt-3">
+                            <a href="{{ route('news.show', $item) }}" class="float-right small pt-3">
                                 Подробнее...
                             </a>
 
@@ -28,6 +28,7 @@
                 @empty
                     <h3>Нет новостей</h3>
                 @endforelse
+                {{ $news->links() }}
             </div>
         </div>
     </div>
