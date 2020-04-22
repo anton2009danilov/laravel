@@ -11,7 +11,10 @@
 
 @section('content')
     <div class="card mt-3">
-        <div class="card-header font-weight-bold">Форма для добавление категории</div>
+        <div class="card-header font-weight-bold">
+            @if ($category->id){{__('Форма для редактирования категории')}}
+            @else{{__('Форма для добавление категории')}}@endif
+        </div>
         <div class="card-body">
 
             <form enctype="multipart/form-data" method="POST"
@@ -19,15 +22,31 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Название</label>
-                    <input name="name" value="{{ $category->name ?? old('name') }}" type="text" class="form-control"
+                    <input name="name" value="{{ old('name') ?? $category->name }}" type="text"
+                           class="form-control @if($errors->has('name')) is-invalid @endif"
                            id="name" placeholder="Название">
+                    @if($errors->has('name'))
+                        <small class="text-danger">
+                            @foreach($errors->get('name') as $error)
+                                {{ $error }}
+                            @endforeach
+                        </small>
+                    @endif
                 </div>
 
-                <div class="form-group">
-                    <label for="slug">Псевдоним</label>
-                    <input name="slug" value="{{ $category->slug ?? old('slug') }}" type="text" class="form-control"
-                           id="slug" placeholder="Псевдоним">
-                </div>
+{{--                <div class="form-group">--}}
+{{--                    <label for="slug">Псевдоним</label>--}}
+{{--                    <input name="slug" value="{{ $category->slug ?? old('slug') }}" type="text"--}}
+{{--                           class="form-control @if($errors->has('slug')) is-invalid @endif"--}}
+{{--                           id="slug" placeholder="Псевдоним">--}}
+{{--                    @if($errors->has('slug'))--}}
+{{--                        <small class="text-danger">--}}
+{{--                            @foreach($errors->get('slug') as $error)--}}
+{{--                                {{ $error }}--}}
+{{--                            @endforeach--}}
+{{--                        </small>--}}
+{{--                    @endif--}}
+{{--                </div>--}}
 
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-outline-primary form-control">

@@ -14,9 +14,12 @@ class CategoryController extends Controller
         return view('admin.category.index', ['categories' => $categories]);
     }
 
-    private function saveChanges(Request $request, Category $category) {
-        $category->fill($request->all());
-        $category->save();
+    private function validateAndSaveChanges(Request $request, Category $category) {
+        $data = $this->validate($request, Category::rules(), [], Category::attributeNames());
+        $category->fill($data);
+        $category->slug = \Str::slug($category->name);
+
+        return $category->save();
     }
 
     public function edit(Request $request, Category $category)
@@ -30,9 +33,13 @@ class CategoryController extends Controller
         $category = new Category();
 
         if ($request->isMethod('post')) {
-//            dd($request, $category);
-            $this->saveChanges($request, $category);
-            return redirect()->route('admin.category.index')->with('success', 'Категория успешно добавлена.');
+            $request->flash();
+            $result = $this->validateAndSaveChanges($request, $category);
+            if ($result) {
+                return redirect()->route('admin.category.index')->with('success', 'Категория успешно добавлена.');
+            } else {
+                return redirect()->route('admin.category.create')->with('error', 'Ошибка добавления категории.');
+            }
         }
 
         return view('admin.category.create')
@@ -40,11 +47,12 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, Category $category) {
-        $this->saveChanges($request, $category);
+        $this->validateAndSaveChanges($request, $category);
         return redirect()->route('admin.category.index')->with('success', 'Категория успешно отредактирована');
     }
 
     public function destroy(Category $category) {
+        $category->news()->delete();
         $category->delete();
         return redirect()->route('admin.category.index')->with('success', 'Категория успешно удалена.');
     }

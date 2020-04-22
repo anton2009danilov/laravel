@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+//        \Validator::extend('jedi', function($attributes, $values, $params, $validator) {
+//            dd($attributes, $values, $params, $validator);
+//            return false;
+//        });
 //        \View::share('menu', 'menu<br>');
     }
 }

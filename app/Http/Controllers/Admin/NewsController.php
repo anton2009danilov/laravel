@@ -19,7 +19,7 @@ class NewsController extends Controller
 
     }
 
-    public function edit(Request $request, News $news)
+    public function edit(News $news)
     {
         return view('admin.news.create', [
             'news' => $news,
@@ -33,23 +33,33 @@ class NewsController extends Controller
         return redirect()->route('admin.news.index')->with('success', 'Новость успешно удалена.');
     }
 
-    private function saveChanges(Request $request, News $news) {
+    private function validateAndSaveChanges(Request $request, News $news)
+    {
         if ($request->file('image')) {
             $path = \Storage::putFile('public/images', $request->file('image'));
             $url = \Storage::url($path);
-            $news->setAttribute('image', $url);
+            $news->image = $url;
+
         }
-        $news->fill($request->all());
-        $news->save();
+        $data = $this->validate($request, News::rules(), [], News::attributeNames());
+        $news->fill($data);
+
+
+        return $news->save();
+
     }
 
     public function update(Request $request, News $news)
     {
-        $news->setAttribute('isPrivate', false);
-
-        $this->saveChanges($request, $news);
-
-        return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
+        $request->flash();
+//        dd(old());
+        $result = $this->validateAndSaveChanges($request, $news);
+        if ($result) {
+            return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');
+        } else {
+            return redirect()->route('admin.news.create')
+                ->with('error', 'Ошибка редактирования новости.');
+        }
     }
 
     public function create(Request $request)
@@ -57,12 +67,14 @@ class NewsController extends Controller
         $news = new News();
 
         if ($request->isMethod('post')) {
-//            $request->flash();
             $url = null;
-
-            $this->saveChanges($request, $news);
-
-            return redirect()->route('admin.news.index')->with('success', 'Новость успешно добавлена.');
+            $request->flash();
+            $result = $this->validateAndSaveChanges($request, $news);
+            if ($result) {
+                return redirect()->route('admin.news.index')->with('success', 'Новость успешно добавлена.');
+            } else {
+                return redirect()->route('admin.news.create')->with('error', 'Ошибка добавления новости.');
+            }
         }
 
         return view('admin.news.create')
