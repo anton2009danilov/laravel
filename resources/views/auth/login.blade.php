@@ -77,13 +77,11 @@
                         </div>
                     </form>
                     <div class="form-group row mt-1">
-                        <div class="col-md-8 offset-md-4">
-                            <a class="nav-link" href="{{ route('vkLogin') }}">
-                                <button type="submit" class="btn-block btn-outline-success">
-                                    {{ __('Войти через VK') }}
-                                </button>
+                        <div class="col-md-8 offset-md-4 flex-wrap">
+                            {{ __('Войти через ') }}
+                            <a class="nav-link d-inline-flex" href="{{ route('vkLogin') }}">
+                                <i class="fab fa-vk fa-border fa-lg"></i>
                             </a>
-
                         </div>
                     </div>
                 </div>

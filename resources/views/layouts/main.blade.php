@@ -9,7 +9,17 @@
     <title>Страница | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{{--    <script--}}
+{{--        src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"--}}
+{{--        data-auto-a11y="true"--}}
+{{--    ></script>--}}
+{{--    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg></script>--}}
+
+
+
 </head>
 <body>
 
@@ -97,5 +107,6 @@
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
