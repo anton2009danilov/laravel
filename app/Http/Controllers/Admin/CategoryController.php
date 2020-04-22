@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::query()->paginate(2);
+        $categories = Category::query()->paginate(5);
 
         return view('admin.category.index', ['categories' => $categories]);
     }
