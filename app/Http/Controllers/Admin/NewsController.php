@@ -41,6 +41,7 @@ class NewsController extends Controller
             $news->image = $url;
 
         }
+
         $data = $this->validate($request, News::rules(), [], News::attributeNames());
         $news->fill($data);
 
@@ -52,7 +53,7 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $request->flash();
-//        dd(old());
+
         $result = $this->validateAndSaveChanges($request, $news);
         if ($result) {
             return redirect()->route('admin.news.index')->with('success', 'Новость успешно отредактирована');

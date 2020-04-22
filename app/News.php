@@ -22,7 +22,7 @@ class News extends Model
             'text' => 'required|min:15',
             'category_id' => "required|exists:{$tableNameCategory},id",
             'image' => 'mimes:jpeg,bmp,png|max:1000',
-            'isPrivate' => "boolean|nullable",
+            'isPrivate' => "sometimes|in:1",
         ];
     }
 

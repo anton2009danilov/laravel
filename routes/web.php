@@ -13,6 +13,7 @@
 
 
 Route::get('/', 'HomeController@index')->name('Home');
+Route::match(['get', 'post'], '/profile/','ProfileController@update')->name('updateProfile');
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,8 @@ Route::get('/', 'HomeController@index')->name('Home');
 Route::group([
     'prefix' => 'admin',
     'namespace' => 'Admin',
-    'as' => 'admin.'
+    'as' => 'admin.',
+    'middleware' => ['auth', 'isAdmin']
 ], function () {
         Route::get('/', 'NewsController@index')->name('news.index');
 
@@ -50,9 +52,16 @@ Route::group([
         Route::get('/category/destroy/{category}', 'CategoryController@destroy')->name('destroy');
     });
 
+    //Users
+    Route::group([
+        'as' => 'users.'
+    ], function () {
+        Route::get('/users/index', 'UserController@index')->name('index');
+        Route::post('/users/update/{user}', 'UserController@update')->name('update');
+    });
+
     Route::get('/downloadImage', 'IndexController@downloadImage')->name('downloadImage');
     Route::get('/json', 'IndexController@json')->name('json');
-
 
 });
 
@@ -83,4 +92,4 @@ Route::view('/vue', 'vue')->name('vue');
 
 Auth::routes();
 
-
+//Auth::routes(['register' => false]);

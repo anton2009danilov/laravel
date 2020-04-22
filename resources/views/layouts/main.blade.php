@@ -21,7 +21,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mr-auto align-items-center">
                 @yield('menu')
             </ul>
 
@@ -53,7 +53,13 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+
+                            <a class="dropdown-item"  href="{{ route('updateProfile') }}">
+                                Изменить профиль
+                            </a>
+
                         </div>
+
                     </li>
                 @endguest
             </ul>

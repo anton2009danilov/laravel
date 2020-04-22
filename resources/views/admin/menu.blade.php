@@ -8,14 +8,13 @@
     <a class="nav-link text-secondary" href="{{ route('admin.category.index') }}">Категории</a>
 </li>
 <li class="nav-item">
+    <a class="nav-link text-secondary" href="{{ route('admin.users.index') }}">Пользователи</a>
+</li>
+<li class="nav-item">
     <a class="nav-link text-secondary" href="{{ route('admin.news.create') }}">Добавить новость</a>
 </li>
 <li class="nav-item">
     <a class="nav-link text-secondary" href="{{ route('admin.category.create') }}">Добавить Категорию</a>
 </li>
-{{--<li class="nav-item">--}}
-{{--    <a class="nav-link text-secondary" href="{{ route('admin.downloadImage') }}">Скачать изображение</a>--}}
-{{--</li>--}}
-{{--<li class="nav-item">--}}
-{{--    <a class="nav-link text-secondary" href="{{ route('admin.json') }}">Скачать JSON</a>--}}
-{{--</li>--}}
+
+

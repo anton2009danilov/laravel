@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent Админка
+    @parent Админка | Категории
 @endsection
 
 @section('menu')
@@ -35,7 +35,9 @@
                         @empty
                             <h3>Нет категорий</h3>
                         @endforelse
-                        {{ $categories->links() }}
+                        <div class="mt-1">
+                            {{ $categories->links() }}
+                        </div>
 
                     </div>
                 </div>
