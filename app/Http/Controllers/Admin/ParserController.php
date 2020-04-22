@@ -29,11 +29,6 @@ class ParserController extends Controller
 //        }
 
         $data = $xml->parse([
-//            'title' => ['uses' => 'channel.title'],
-//            'link' => ['uses' => 'channel.link'],
-//            'text' => ['uses' => 'channel.description'],
-//            'image' => ['uses' => 'channel.image.url'],
-//            'enclosure' => ['uses' => 'channel.item[enclosure]'],
             'news' => ['uses' => 'channel.item[title,link,guid,description,category]']
         ]);
 

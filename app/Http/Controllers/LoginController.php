@@ -23,16 +23,17 @@ class LoginController extends Controller
         }
         $user = Socialite::driver('vkontakte')->user();
 
-        $userInSystem = User::query()
-            ->where('email', $user->accessTokenResponseBody['email'])
-            ->first();
+        $userInSystem = $userAdaptor->getUserBySocId($user, 'vk');
 
-        if (is_null($userInSystem)) {
-            $userInSystem = $userAdaptor->getUserBySocId($user, 'vk');
+        if (!is_null($userInSystem)) {
             Auth::login($userInSystem);
-            return redirect()->route('Home')->with('success', 'Ваш текущий пароль "123", смените пароль на странице "Изменить профиль"');
+            if ($userInSystem->isNew === true) {
+                return redirect()->route('Home')->with('success', 'Ваш текущий пароль "123", смените пароль на странице "Изменить профиль"');
+            } else {
+                return redirect()->route('Home');
+            }
         } else {
-            return redirect('http://laravel.local/login')->with('error', 'Пользователь с таким email уже существует');
+            return redirect()->route('login')->with('error', 'Пользователь с таким email уже существует');
         }
     }
 }

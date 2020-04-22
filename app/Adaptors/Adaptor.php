@@ -15,7 +15,12 @@ class Adaptor
             ->where('id_in_soc', $user->id)
             ->where('type_auth', $socName)
             ->first();
-        if (is_null($userInSystem)) {
+        $sameEmail = User::query()
+            ->where('email', $user->accessTokenResponseBody['email'])
+            ->first();
+//        dd($sameEmail);
+
+        if (is_null($userInSystem) && is_null($sameEmail)) {
             $userInSystem = new User();
             $userInSystem->fill([
                 'name' => !empty($user->getName())? $user->getName(): '',
@@ -26,7 +31,14 @@ class Adaptor
                 'avatar' => !empty($user->getAvatar())? $user->getAvatar(): ''
             ]);
             $userInSystem->save();
+            $userInSystem->isNew = true;
+            return $userInSystem;
+        } else if (is_null($userInSystem)){
+            return null;
+        } else if ($userInSystem->id_in_soc === $sameEmail->id_in_soc){
+            return $userInSystem;
+        } else {
+            return null;
         }
-        return $userInSystem;
     }
 }
