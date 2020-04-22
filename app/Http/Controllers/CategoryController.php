@@ -10,7 +10,7 @@ use Illuminate\Pagination\Paginator;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::query()->select('id', 'name', 'slug')->paginate(2);
+        $categories = Category::query()->select('id', 'name', 'slug')->paginate(5);
         return view('news.category.index')
             ->with('categories', $categories);
     }
@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
         $category = Category::query()->where('slug', $name)->first();
 
-        $news = $category->news()->paginate(3);
+        $news = $category->news()->paginate(6);
 
         if (!empty($category)) {
 

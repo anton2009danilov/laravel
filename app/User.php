@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'id_in_soc', 'type_auth', 'avatar'
     ];
 
     /**
@@ -40,7 +40,10 @@ class User extends Authenticatable
     public static function rules() {
         return [
             'name' => ['required', 'min:3', 'max:25'],
-            'email' => 'required|min:6|email',
+//            'email' => 'required|min:6|email',
+            'email' => 'required|min:6|email|unique:users,email',
+            'password' =>'required',
+            'new_password' => 'required'
         ];
     }
 }

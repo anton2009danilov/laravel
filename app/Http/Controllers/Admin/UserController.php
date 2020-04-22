@@ -20,12 +20,12 @@ class UserController extends Controller
 
     public function update(User $user) {
         if($user->isAdmin) {
-            $user->isAdmin = 0;
+            $user->isAdmin = false;
 
         } else {
-            $user->isAdmin = 1;
+            $user->isAdmin = true;
         }
         $user->save();
-        return redirect()->route('admin.users.index');
+        return redirect()->back()->with('success', 'Права пользователя изменены.');
     }
 }

@@ -14,15 +14,20 @@
 
                     <div class="list-group-item m-2">
                         {{ $item->title }}
-                        <div class="card-img"
-                             style="background-image: url({{ $item->image ??
-                                         asset('storage/default.jpg') }})">
-                        </div>
-                        @if (!$item->isPrivate === true)
+
+                        @if(!is_null($item->image))
+                            <img src="{{ $item->image }}" alt="news_image">
+                        @endif
+{{--                        <div class="card-img"--}}
+{{--                             style="background-image: url({{ $item->image ??--}}
+{{--                                         asset('storage/default.jpg') }})">--}}
+{{--                        </div>--}}
+                        @if (!$item->isPrivate || Auth::check())
                             <a href="{{ route('news.show', $item) }}" class="float-right small pt-3">
                                 Подробнее...
                             </a>
-
+                        @else
+                            <small class="float-right pt-3">Зарегистрируйтесь, чтобы прочитать новость</small>
                         @endif
                     </div>
                 @empty

@@ -29,6 +29,8 @@ Route::group([
     'as' => 'admin.',
     'middleware' => ['auth', 'isAdmin']
 ], function () {
+        Route::get('/parser', 'ParserController@index')->name('parser');
+
         Route::get('/', 'NewsController@index')->name('news.index');
 
     //CRUD News
@@ -91,5 +93,8 @@ Route::group([
 Route::view('/vue', 'vue')->name('vue');
 
 Auth::routes();
+
+Route::get('/auth/vk', 'LoginController@loginVK')->name('vkLogin');
+Route::get('/auth/vk/response', 'LoginController@responseVK')->name('vkResponse');
 
 //Auth::routes(['register' => false]);

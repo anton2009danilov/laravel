@@ -9,7 +9,17 @@
     <title>Страница | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+{{--    <script--}}
+{{--        src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"--}}
+{{--        data-auto-a11y="true"--}}
+{{--    ></script>--}}
+{{--    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg></script>--}}
+
+
+
 </head>
 <body>
 
@@ -40,7 +50,10 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            @if (Auth::user()->avatar)
+                                <img src="{{ Auth::user()->avatar }}" alt="user Avatar" class="w-25">
+                            @endif
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -94,5 +107,6 @@
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

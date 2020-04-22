@@ -8,6 +8,9 @@
     <a class="nav-link text-secondary" href="{{ route('admin.category.index') }}">Категории</a>
 </li>
 <li class="nav-item">
+    <a class="nav-link text-secondary" href="{{ route('admin.parser') }}">Parser</a>
+</li>
+<li class="nav-item">
     <a class="nav-link text-secondary" href="{{ route('admin.users.index') }}">Пользователи</a>
 </li>
 <li class="nav-item">

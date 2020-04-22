@@ -8,13 +8,17 @@
 
 @section('content')
 
-    @if (!$news->isPrivate === true)
+    @if (!$news->isPrivate || Auth::check())
     <div class="card mt-3">
         <div class="card-header">{{ $news->title }}</div>
-        <div class="card-img"
-             style="background-image: url({{ $news->image ??
-                                         asset('storage/default.jpg') }})">
-        </div>
+        @if(!is_null($news->image))
+            <img src="{{ $news->image }}" alt="news_image">
+        @endif
+{{--        <div class="card-img"--}}
+{{--             style="background-image: url({{ $news->image ??--}}
+{{--                                         asset('storage/default.jpg') }})">--}}
+{{--        </div>--}}
+
         <div class="card-body">
             <div class="list-group">
                     <article>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,7 +17,16 @@ class ProfileController extends Controller
         $errors = [];
 
         if ($request->isMethod('post')) {
-            $this->validate($request, User::rules());
+            if(!$request['new_password']) {
+                $request['new_password'] = $request['password'];
+            }
+
+            if($request['email'] === $user->email) {
+                $this->validate($request, Arr::except(User::rules(), ['email']));
+            } else {
+                $this->validate($request, User::rules());
+            }
+
             if (Hash::check($request->post('password'), $user->password)) {
 
                 $user->fill([

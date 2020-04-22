@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::query()->paginate(2);
+        $categories = Category::query()->paginate(5);
 
         return view('admin.category.index', ['categories' => $categories]);
     }
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     private function validateAndSaveChanges(Request $request, Category $category) {
         $data = $this->validate($request, Category::rules(), [], Category::attributeNames());
         $category->fill($data);
-        $category->slug = \Str::slug($category->name);
+        $category->slug = Str::slug($category->name);
 
         return $category->save();
     }
