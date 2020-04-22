@@ -30,7 +30,7 @@ class LoginController extends Controller
         if (is_null($userInSystem)) {
             $userInSystem = $userAdaptor->getUserBySocId($user, 'vk');
             Auth::login($userInSystem);
-            return redirect()->route('Home');
+            return redirect()->route('Home')->with('success', 'Ваш текущий пароль "123", смените пароль на странице "Изменить профиль"');
         } else {
             return redirect('http://laravel.local/login')->with('error', 'Пользователь с таким email уже существует');
         }
