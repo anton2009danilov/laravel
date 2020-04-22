@@ -10,17 +10,17 @@ class Category extends Model
         1 => [
             'id' => 1,
             'name' => 'Горячие новости',
-            'alias' => 'hot'
+            'slug' => 'hot'
         ],
         [
             'id' => 2,
             'name' => 'Жуткие новости',
-            'alias' => 'horrible'
+            'slug' => 'horrible'
         ],
         [
             'id' => 3,
             'name' => 'Добрые новости',
-            'alias' => 'good'
+            'slug' => 'good'
         ]
     ];
 
@@ -28,7 +28,18 @@ class Category extends Model
         return static::$categories;
     }
 
-    public static function getCategoryId($id) {
+    public static function getCategoryById($id) {
         return static::getCategories()[$id];
+    }
+
+    public static function getCategoryIdByName($slug) {
+        $id = null;
+        foreach (static::$categories as $category) {
+            if ($category['slug'] == $slug) {
+                $id = $category['id'];
+                break;
+            }
+        }
+        return $id;
     }
 }
