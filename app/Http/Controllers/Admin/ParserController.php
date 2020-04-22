@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\News;
-use DOMDocument;
-use Illuminate\Http\Request;
+//use DOMDocument;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Arr;
+//use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Orchestra\Parser\Xml\Facade as XmlParser;
 
@@ -38,6 +37,7 @@ class ParserController extends Controller
             'news' => ['uses' => 'channel.item[title,link,guid,description,category]']
         ]);
 
+        $value = 0;
         foreach ($data['news'] as $item) {
             $news = new News();
 
@@ -55,10 +55,11 @@ class ParserController extends Controller
 
             if(is_null(News::query()->where('title', $news->title)->first())) {
                 $news->save();
+                $value++;
             }
         }
 
-        return redirect()->route('admin.news.index');
+        return redirect()->route('admin.news.index')->with('success', "Добавлено $value новостей");
     }
 
 }
