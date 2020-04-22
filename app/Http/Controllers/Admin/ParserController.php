@@ -36,14 +36,10 @@ class ParserController extends Controller
         foreach ($data['news'] as $item) {
             $news = new News();
 
-            $category_name = $item['category'];
-            if(is_null(Category::query()->where('name', $category_name)->first())) {
-                $new_category = new Category();
-                $new_category['name'] = $category_name;
-                $new_category->slug = Str::slug($category_name);
-                $new_category->save();
-            }
-            $news->category_id = Category::query()->where('name', $item['category'])->first()['id'];
+            $category = Category::query()->firstOrCreate(['name' => $item['category']],
+                ['slug' => Str::slug($item['category'])] );
+
+            $news->category_id = $category->id;
             $news->title = $item['title'];
             $news->text = $item['description'];
 //            $news->image = array_shift($links);
