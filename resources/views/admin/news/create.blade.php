@@ -58,7 +58,7 @@
                     <label for="text">Текст новости</label>
                     <textarea name="text"
                               class="form-control @if($errors->has('text')) is-invalid @endif"
-                              id="text" rows="3">@if(Arr::has(old(), 'text') && old('text') == null)@else{{ old('text') ?? $news->text }}@endif</textarea>
+                              id="textEdit" rows="3">{!! empty(old()) ? $news->text : old('text') !!}</textarea>
                     @if($errors->has('text'))
                         <small class="text-danger">
                             @foreach($errors->get('text') as $error)
@@ -107,6 +107,21 @@
 
         </div>
     </div>
+
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script>
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+    </script>
+
+    <script>
+        CKEDITOR.replace('textEdit', options);
+    </script>
+
 @endsection
 
 
