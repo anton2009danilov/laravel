@@ -15,7 +15,7 @@ use Orchestra\Parser\Xml\Facade as XmlParser;
 
 class ParserController extends Controller
 {
-    public function index(XMLParserService $parserService) {
+    public function index() {
         $start = date('c');
         $rssLinks = [
             "https://aif.ru/rss/politics.php",
@@ -27,10 +27,8 @@ class ParserController extends Controller
             "https://aif.ru/rss/realty.php",
 //            "https://aif.ru/rss/paper.php",
         ];
-//        $rssLink = "https://aif.ru/rss/money.php";
-//        $news_count = 0;
+
         foreach ($rssLinks as $link) {
-//            $news_count += $parserService->saveNews($link);
             NewsParsing::dispatch($link);
         }
 
