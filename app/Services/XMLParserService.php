@@ -46,6 +46,6 @@ class XMLParserService
 //                $value++;
             }
         }
-        return $value;
+//        return $value;
     }
 }
