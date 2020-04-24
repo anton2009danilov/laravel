@@ -19,7 +19,7 @@
 
                         @forelse ($categories as $category)
                             <div class="card mt-1 ">
-                                <div class="m-2 d-inline-flex justify-content-around">
+                                <div class="m-2 d-inline-flex justify-content-between">
                                     <h3>{{ $category->name }}</h3>
                                     <div>
                                         <a href="{{ route('admin.category.edit', $category) }}" class="float-right mr-1">
