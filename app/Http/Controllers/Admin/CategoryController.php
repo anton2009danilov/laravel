@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     public function index() {
-        $categories = Category::query()->paginate(5);
+        $categories = Category::query()->orderBy('name')->paginate(15);
 
         return view('admin.category.index', ['categories' => $categories]);
     }
