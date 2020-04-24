@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index() {
-        $news = News::query()
-            ->paginate(5);
+        $news = News::query()->orderByDesc('created_at')
+            ->paginate(15);
 
         return view('news.index')
             ->with('news', $news);

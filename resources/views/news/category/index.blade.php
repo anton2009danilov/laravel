@@ -8,11 +8,9 @@
 
 @section('content')
     @forelse ($categories as $category)
-        <div class="card mt-3">
-            <div class="card-body">
-                <a href="{{ route('news.category.show', $category->slug) }}">
-                    <h2>{{ $category->name }}</h2>
-                </a>
+        <div class="d-inline-flex mt-2">
+            <div class="card bg-info p-1">
+                <a class="text-white btn" href="{{ route('news.category.show', $category->slug) }}">{{ $category->name }}</a>
             </div>
         </div>
     @empty
