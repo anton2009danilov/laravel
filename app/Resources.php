@@ -10,7 +10,7 @@ class Resources extends Model
 
     public static function rules() {
         return [
-            'rss' => ['required', 'min:10']
+            'rss' => ['required', 'min:17', 'max:80', 'unique:resources']
         ];
     }
 }
