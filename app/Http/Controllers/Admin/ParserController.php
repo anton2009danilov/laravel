@@ -8,6 +8,7 @@ use App\News;
 //use DOMDocument;
 use App\Http\Controllers\Controller;
 //use Illuminate\Support\Arr;
+use App\Resources;
 use App\Services\XMLParserService;
 use Illuminate\Support\Str;
 use Orchestra\Parser\Xml\Facade as XmlParser;
@@ -28,8 +29,10 @@ class ParserController extends Controller
 //            "https://aif.ru/rss/paper.php",
         ];
 
+        $rssLinks = Resources::query()->select('rss')->get();
+
         foreach ($rssLinks as $link) {
-            NewsParsing::dispatch($link);
+            NewsParsing::dispatch($link->rss);
         }
 
 
