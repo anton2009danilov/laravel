@@ -10,8 +10,8 @@
 
 @section('content')
 
-            <h1 class="text-center mt-1">Админка | Новости</h1>
-
+    <h1 class="text-center mt-1">Админка | Новости</h1>
+    <a href="{{ route('admin.news.create') }}" class="btn btn-block bg-success text-white">Добавить новость</a>
 
     <div class="card mt-3">
         <div class="card-body">
@@ -21,18 +21,18 @@
                         <div class="border-dark p-1 row">
                             <div class="col-sm-9">{{ $item->title }}</div>
                             <div class="col-sm-3 d-flex align-items-center float-right">
-                                <a href="{{ route('admin.news.edit', $item) }}" class="">
+                                <a href="{{ route('admin.news.edit', $item) }}">
                                     <button type="button" class="btn btn-success btn-sm">
                                         <i class="far fa-edit"></i>
                                     </button>
                                 </a>
-                                <a href="{{ route('admin.news.destroy', $item) }}" class="">
+                                <a href="{{ route('admin.news.destroy', $item) }}">
                                     <button type="button" class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </a>
 
-                                <a href="{{ route('news.show', $item) }}" class="">
+                                <a href="{{ route('news.show', $item) }}">
                                     <button type="button" class="btn btn-primary btn-sm">
                                         <i class="fas fa-glasses"></i>
                                     </button>

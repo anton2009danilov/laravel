@@ -11,7 +11,7 @@
 @section('content')
 
             <h1 class="text-center mt-1">Админка | Категории</h1>
-
+            <a href="{{ route('admin.category.create') }}" class="btn btn-block bg-success text-white">Добавить категорию</a>
 
             <div class="card">
                 <div class="card-body">
