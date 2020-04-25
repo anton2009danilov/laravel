@@ -114,8 +114,37 @@
             filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
             filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
             filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
-        };
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}',
+            // language: 'eng',
+            uiColor: '#8feff7',
+            toolbar: [
+                // {
+                // name: 'clipboard',
+                // items: ['PasteFromWord', '-']
+                // },
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat']
+                },
+                // {
+                //     name: 'links',
+                //     items: ['Link', 'Unlink']
+                // },
+                {
+                    name: 'paragraph',
+                    items: ['NumberedList', 'BulletedList', '-', 'Blockquote']
+                },
+                {
+                    name: 'insert',
+                    items: ['Image']
+                },
+                {
+                    name: 'editing',
+                    items: ['Scayt']
+                },
+            ],
+
+        }
     </script>
 
     <script>
