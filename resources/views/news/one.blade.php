@@ -22,7 +22,7 @@
         <div class="card-body">
             <div class="list-group">
                     <article>
-                        <p>{{ $news->text }}</p>
+                        <p>{!! $news->text !!}</p>
                     </article>
             </div>
 {{--        <a href="{{ route('news.category.show', $category['slug']) }}" class="small float-right">--}}

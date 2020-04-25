@@ -10,7 +10,7 @@
 
 @section('content')
 
-            <h1 class="text-center mt-1">Админка | Пользователи</h1>
+    <h1 class="text-center mt-1">Админка | Пользователи</h1>
 
 
     <div class="card mt-3">
@@ -22,18 +22,20 @@
                         <h3>{{ $item->name }}</h3>
                         <small>@if($item->isAdmin)Пользователь с правами администратора@endif</small>
 
-                        <form action="{{ route('admin.users.update', $item) }}" method="post" >
+                        <form action="{{ route('admin.users.update', $item) }}" method="post">
                             @csrf
-                            <input type="checkbox" name="isAdmin" hidden value="@if($item->isAdmin){{__('true')}}@else{{__('false')}}@endif">
+                            <input type="checkbox" name="isAdmin" hidden
+                                   value="@if($item->isAdmin){{__('true')}}@else{{__('false')}}@endif">
                             @if(!$item->isAdmin)
-                            <button type="submit" class="btn btn-success float-right mr-1">{{__('Назначить администратором')}}</button>
+                                <button type="submit"
+                                        class="btn btn-success float-right mr-1">{{__('Назначить администратором')}}</button>
                             @else
-                                <button type="submit" class="btn btn-danger float-right mr-1">{{__('Убрать из списка администраторов')}}</button>
+                                <button type="submit"
+                                        class="btn btn-danger float-right mr-1">{{__('Убрать из списка администраторов')}}</button>
                             @endif
                         </form>
 
-
-
+                        <button data-id="{{ $item->id }}" class="testApi">Test Api</button>
 
                     </div>
                 @empty
@@ -44,4 +46,17 @@
         </div>
     </div>
 
+    <script>
+        let buttons = document.querySelectorAll('.testApi');
+        buttons.forEach((elem) => {
+            elem.addEventListener('click', () => {
+                let id = elem.getAttribute('data-id');
+                (async () => {
+                    const response = await fetch('/api/apiTest/?id=' + id);
+                    const answer = await response.json();
+                    console.log(answer);
+                })();
+            })
+        })
+    </script>
 @endsection

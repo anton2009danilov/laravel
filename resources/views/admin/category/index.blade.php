@@ -11,25 +11,27 @@
 @section('content')
 
             <h1 class="text-center mt-1">Админка | Категории</h1>
+            <a href="{{ route('admin.category.create') }}" class="btn btn-block bg-success text-white">Добавить категорию</a>
 
-
-            <div class="card mt-3">
+            <div class="card">
                 <div class="card-body">
                     <div class="list-group">
 
                         @forelse ($categories as $category)
-                            <div class="card mt-3">
-                                <div class="card-body">
-                                    <h2>{{ $category->name }}</h2>
-                                    <a href="{{ route('admin.category.edit', $category) }}" class="float-right mr-1">
-                                        <button type="button" class="btn btn-success">Edit</button>
-                                    </a>
-                                    <a href="{{ route('admin.category.destroy', $category) }}" class="float-right mr-1">
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                    </a>
-                                    <a href="{{ route('news.category.show', $category->slug) }}" class="float-right mr-1">
-                                        <button type="button" class="btn btn-primary">Show</button>
-                                    </a>
+                            <div class="card mt-1 ">
+                                <div class="m-2 d-inline-flex justify-content-between">
+                                    <h3>{{ $category->name }}</h3>
+                                    <div>
+                                        <a href="{{ route('admin.category.edit', $category) }}" class="float-right mr-1">
+                                            <button type="button" class="btn btn-success">Edit</button>
+                                        </a>
+                                        <a href="{{ route('admin.category.destroy', $category) }}" class="float-right mr-1">
+                                            <button type="button" class="btn btn-danger">Delete</button>
+                                        </a>
+                                        <a href="{{ route('news.category.show', $category->slug) }}" class="float-right mr-1">
+                                            <button type="button" class="btn btn-primary">Show</button>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         @empty
