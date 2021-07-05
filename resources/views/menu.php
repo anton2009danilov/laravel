@@ -1,12 +1,4 @@
-<ul class="nav">
-    <li class="nav-item">
-        <a class="nav-link" href="/">Главная</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/about">О нас</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/news">Новости</a>
-    </li>
-</ul>
+<a class="nav-link" href="<?= route('Home') ?>">Главная</a>
+<a class="nav-link" href="<?= route('news.all') ?>">Новости</a>
+<a class="nav-link" href="<?= route('admin.index', null, false) ?>">Админка</a>
 
